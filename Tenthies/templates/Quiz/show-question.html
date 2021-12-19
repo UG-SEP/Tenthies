@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:8000/Quiz/show-ques" method="post">
+        {% csrf_token %}
+        <div>{{qno}}</div>
+        <div>{{question.ques}}</div>
+        <input type="radio" name="choice" value="{{question.option1}}" checked>{{question.option1}}
+        <input type="radio" name="choice" value="{{question.option2}}">{{question.option2}}
+        <input type="radio" name="choice" value="{{question.option3}}">{{question.option3}}
+        <input type="radio" name="choice" value="{{question.option4}}">{{question.option4}}
+        <input type="submit" value="Next">
+    </form>
+</body>
+</html>

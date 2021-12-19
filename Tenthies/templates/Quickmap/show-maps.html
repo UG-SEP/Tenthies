@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickMap</title>
+</head>
+<body>
+    {% for map in quickmaps %}
+    <div>{{map.subcode}}</div>
+    <div>{{map.subname}}</div>
+    <div>{{map.chname}}</div>
+    <div><img src="{{map.quickmap.url}}" height="200px" alt="quickmap" title="quickmap"></div>
+    <div><a href="{{map.quickmap.url}}" download="quickmap">download</a></div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.quizinfo{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div>Username: {{user.username}}</div>
+    <div>Password: {{user.email}}</div>
+    {% endif %}
+    <br>
+    {% for res in result %}
+    <div class="quizinfo">Total marks {{res.totalmarks}}</div>
+    <div class="quizinfo">Marks Obtained {{res.marksobtained}}</div>
+    <div class="quizinfo">Percentage{{res.percentage}}</div>
+    {% endfor %}
+</body>
+</html>

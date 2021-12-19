@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for res in resources %}
+    <div>{{res.subcode}}</div>
+    <div>{{res.subname}}</div>
+    <div>{{res.chname}}</div>
+    <div><embed src="{{res.pdf.url}}" type="application/pdf" width="100%" height="600px" /></div>
+    {{res.pdfs}}
+    {% endfor %}
+</body>
+</html>

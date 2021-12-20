@@ -20,6 +20,8 @@ def TakeTest(request):
     global questions,i
     all_questions=models.Question.objects.all()
     questions=getSpecificQuestions(all_questions,request)
+    if(len(questions)==0):
+        return HttpResponse("<h1>Error No question found</h1>")
     random.shuffle(questions)
     i+=1
     res=render(request,'Quiz/show-question.html',{'question':questions[i-1],'qno':i})
@@ -43,9 +45,9 @@ def ShowQues(request):
 def getSpecificQuestions(all_questions,request):
     specific_questions=[]
     for ques in all_questions:
-        if(ques.chname==request.GET.get('chname') and
-        ques.subname==request.GET.get('subname') and
-        ques.level==request.GET.get('level')):
+        if(ques.chname.upper()==request.GET.get('chname').upper() and
+        ques.subname.upper()==request.GET.get('subname').upper() and
+        ques.level.upper()==request.GET.get('level').upper()):
             specific_questions.append(ques)
             global subject
             subject.subcode=request.GET.get('subcode')

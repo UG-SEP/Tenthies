@@ -134,7 +134,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILE_DIR = [
-    STATIC_DIR
+STATICFILES_DIRS = [
+    STATIC_DIR,
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'

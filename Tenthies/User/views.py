@@ -1,5 +1,5 @@
 from django.http import response
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from Tenthies.settings import EMAIL_HOST_USER
 from django.http import HttpResponseRedirect
@@ -7,8 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.conf import settings
-from django.template.loader import render_to_string
 
 def deco_auth(isauth):
     def mod_isauth(request):
@@ -37,6 +35,7 @@ def signin(request):
         user = authenticate(username=username,email=email,password=password)
         if user is not None:
             login(request,user)
+            request.session.modified = True
             request.session['username']=username
             request.session['email']=email
             request.session['password']=password
@@ -54,10 +53,13 @@ def signin(request):
     return render(request,'User/signin.html')
 
 def signout(request):
+    try:
+        del request.session['username']
+        del request.session['email']
+        del request.session['password']
+    except KeyError:
+        pass
     logout(request)
-    del request.session['username']
-    del request.session['email']
-    del request.session['password']
     return HttpResponseRedirect('http://localhost:8000/')
 
 @deco_auth

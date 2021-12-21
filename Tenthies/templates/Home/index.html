@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title>Responsive Navbar with Search Box | CodingNepal</title>
+      <title>10thies | Home</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 	  <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -14,27 +14,38 @@
             <span class="fas fa-bars"></span>
          </div>
          <div class="logo">
-			 <a href="index.html"><span style="color: var(--main-color) ;">10</span>thies</a>
+			 <a href="http://localhost:8000"><span style="color: var(--main-color) ;">10</span>thies</a>
          </div>
          <div class="nav-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Quiz</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">QuickMap</a></li>
+            <li><a href="http://localhost:8000">Home</a></li>
+            <li><a href="http://localhost:8000/Quiz/">Quiz</a></li>
+            <li><a href="http://localhost:8000/resources/">Resources</a></li>
+            <li><a href="http://localhost:8000/quickmap/">QuickMap</a></li>
             <li><a href="#">Guide</a></li>
          </div>
          <div class="user">
-			 <a href=""><span  class="fas fa-user"></span></a>
+			 {% if user.is_authenticated %}
+			 <a href="http://localhost:8000/Profile"><span  class="fas fa-user"></span></a>
+			 {% else %}
+			 <!--add the css class which contains user with plus sign(signup)-->
+			 <a href="http://localhost:8000/User/signup"><span  class=""></span></a>
+			 {% endif %} 
 			</div>
          <div class="cancel-icon">
             <span class="fas fa-times"></span>
          </div>
 		 <div  class="nav-items log">
+			 {% if user.is_authenticated %}
 			<li>
-				<a class="fas fa-user"> Sign-Up</a>
+				<a class="fas fa-user" href="http://localhost:8000/Profile"> Profile</a>
 			</li>
+			{% else %}
+			<li>
+				<!--add the css class which contains user with plus sign(signup)-->
+				<a class="" href="http://localhost:8000/User/signup"> Sign-Up</a>
+			</li>
+			{% endif %}
 		 </div>
-         
       </nav>
 
 	  <section class="home1" ><div class="content">
@@ -47,12 +58,11 @@
       </div></section>
 
 	  <section class="home2">
-		<a href="#" class="card education">
+		<a href="http://localhost:8000/Quiz/" class="card education">
 			<div class="overlay"></div>
 		 <div class="circle">
 	   
 	   <svg width="71px" height="76px" viewBox="29 14 71 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		   <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
 		   <desc>Created with Sketch.</desc>
 		   <defs></defs>
 		   <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(30.000000, 14.000000)">
@@ -83,18 +93,12 @@
 		 </div>
 		 <p>Quiz</p>
 	   </a>
-	   
-	   
-	   
-	   
-	   
-	   
+
 	   <a href="#" class="card credentialing">
 			<div class="overlay"></div>
 		 <div class="circle">
 		   
 	   <svg width="64px" height="72px" viewBox="27 21 64 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		   <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
 		   <desc>Created with Sketch.</desc>
 		   <defs>
 			   <polygon id="path-1" points="60.9784821 18.4748913 60.9784821 0.0299638385 0.538377293 0.0299638385 0.538377293 18.4748913"></polygon>
@@ -124,22 +128,13 @@
 		 </div>
 		 <p>Guidance</p>
 	   </a>
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   <a href="#" class="card wallet">
+	 
+	   <a href="http://localhost:8000/resources/" class="card wallet">
 			<div class="overlay"></div>
 		 <div class="circle">
 		   
 		   
 	   <svg width="78px" height="60px" viewBox="23 29 78 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		   <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
 		   <desc>Created with Sketch.</desc>
 		   <defs></defs>
 		   <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(23.000000, 29.500000)">
@@ -156,17 +151,8 @@
 		 </div>
 		 <p>Resources</p>
 	   </a>
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   <a href="#" class="card human-resources">
+	
+	   <a href="http://localhost:8000/quickmap/" class="card human-resources">
 			<div class="overlay"></div>
 		 <div class="circle">
 			

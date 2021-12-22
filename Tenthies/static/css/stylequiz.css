@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+:root{
+  --main-color:#ff3d00;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+ 
+}
+section{
+  padding-bottom: 20px;
+  height: 72vh;
+  border:solid 1px rgb(196, 196, 196);
+  height: auto;
+  width: auto;
+}
+section:nth-child(2n){
+    background-color: #9e9b9b29;
+}
+section:nth-child(2n+1){
+    background-color: white;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+body{
+  background: #f2f2f2;
+  text-decoration: none;
+}
+nav{
+  background: #171c24;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 100px;
+}
+nav .logo{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+nav .logo:hover {
+  transform: scale(1.1);
+  transition: all .5s ease;
+}
+nav .nav-items{
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 40px;
+}
+nav .nav-items li{
+  list-style: none;
+  padding: 0 15px;
+}
+nav .nav-items li a{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+#userlogo{
+  padding:10px ;
+  margin: 15px;
+  border: solid orange 4px;
+  border-radius: 50%;
+}
+.main-navigation {
+    padding-bottom:7px ;
+    border-bottom-style: solid;
+    border-bottom-color: yellow;
+    border-bottom-width: 3px;
+}
+nav .log li {
+  color: white;
+  margin-left: 70%;
+}
+nav .user span{
+  color: white;
+}
+nav .nav-items li a:hover{
+  color: var(--main-color);
+}
+
+nav .menu-icon,
+nav .cancel-icon,
+nav .user{
+  width: 40px;
+  text-align: center;
+  margin: 0 50px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+nav .menu-icon span,
+nav .cancel-icon,
+nav .user{
+  display: none;
+}
+@media (max-width: 1245px) {
+  nav{
+    padding: 0 50px;
+  }
+}
+@media (max-width: 1140px){
+  nav{
+    padding: 0px;
+  }
+  nav .logo{
+    flex: 2;
+    text-align: center;
+
+  }
+  .color{
+     color:darkgrey;
+  }
+  nav .nav-items{
+    position: fixed;
+    z-index: 99;
+    top: 70px;
+    width: 100%;
+    left: -100%;
+    height: 100%;
+    padding: 10px 50px 0 50px;
+    text-align: center;
+    background: #14181f;
+    display: inline-block;
+    transition: left 0.3s ease;
+  }
+  nav .nav-items.active{
+    left: 0px;
+  }
+  nav .nav-items li{
+    line-height: 40px;
+    margin: 30px 0;
+  }
+  nav .nav-items li a{
+    font-size: 20px;
+  }
+  
+  nav .menu-icon{
+    display: block;
+  }
+  nav .user, 
+  nav .menu-icon span{
+    display: block;
+  }
+  nav .menu-icon span.hide,
+  nav .user.hide{
+    display: none;
+  }
+  nav .cancel-icon.show{
+    display: block;
+  }
+}
+
+
+
+.quiz{
+  padding-top:1% ;
+  background-color: lightgrey;
+}
+
+.quiz-heading{
+
+  display: block
+  align-content: center;
+
+}
+
+.quiz-heading h1{
+
+  font-size: 64px;
+  color: orangered;
+  text-align: center;
+  background: #171c24;
+  border: solid gray 10px;
+  margin-bottom: 1%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns */
+.column {
+  flex: 25%;
+  padding: 20px;
+}
+.column a{
+  color: black;
+}
+
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+  .column {
+    flex: 50%;
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
+.h4 {
+  background: grey;
+}
+
+
+/*Subject names*/
+
+.heading-logo{
+
+  display: inline;
+  height: 50px;
+  width: 50px;
+  float: left;
+  padding-right: 20px;
+}
+
+.heading-center{
+  
+  display: absolute;
+  color: orangered ;
+  background-color: #171c24;
+  font-size: 28px;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+

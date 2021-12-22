@@ -198,7 +198,7 @@ nav .user{
 
 /* Create four equal columns */
 .column {
-  flex: 25%;
+  flex: 8;
   padding: 20px;
 }
 .column a{
@@ -208,14 +208,14 @@ nav .user{
 /* On screens that are 992px wide or less, go from four columns to two columns */
 @media screen and (max-width: 992px) {
   .column {
-    flex: 50%;
+    flex: 25%;
   }
 }
 
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .row {
-    flex-direction: column;
+  .column {
+    flex: 50%;
   }
 }
 .h4 {
@@ -245,3 +245,12 @@ nav .user{
   padding-bottom: 15px;
 }
 
+.column h3{
+
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  border-bottom: 8px solid rgba(60,164,150,0.6);
+  border-radius: 40px 40px 40px 40px;
+  margin-bottom: 25px;
+}

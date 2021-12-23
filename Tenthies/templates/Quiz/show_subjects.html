@@ -1,36 +1,29 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="{% static 'css/subjectcard.css'%}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tenthies | Quiz</title>
+	
 </head>
 <body>
-    {% csrf_token %}
-    <h1>Subjects</h1>
-    {% for sub in subjects %}
-    <div>
-        <div><img src="{{sub.subimg.url}}" alt=""></div>
-        <div style="background-color: {{sub.sub_bgcolor}};">{{sub.subcode}}</div>
-        <div>{{sub.subname}}</div>
-        <div>{{sub.chname}}</div>
-        <div>{{sub.level}}</div>
-        <div><a href="http://localhost:8000/Quiz/take-test?level={{sub.level}}&chname={{sub.chname}}&subname={{sub.subname}}&subcode={{sub.subcode}}">Take test</a></div>
-    </div>
-    {% endfor %}
-    
     <!-- SUBJECT CARDS  -->
-
 	  <section class="home2"> 
-		<a href="#" class="blog-cards maths-color maths ">
+		{% for sub in subjects %}
+		<a href="http://localhost:8000/Quiz/show-test?subname={{sub.subname}}" class="blog-cards" style=" --bg-color: {{sub.sub_bgcolor}}; 
+		--text-color-hover: {{sub.sub_textcolor_hover}};--bg-color-light: {{sub.sub_bgcolor_light}};
+		 --box-shadow-color: {{sub.sub_boxshadow_color}}">
 			<div class="overlay"></div>
-		 <div class="circle">
-	
+		 <div class="circle" style="background-image: url({{sub.subimg.url}}); background-repeat: no-repeat;
+		 background-position: center; background-size: 130px;">
 		 </div>
-		 <p> Maths </p>
+		 <p> {{sub.subname}} </p>
 	   </a>
-	   
+	   {% endfor %}
+	   <!--
 	   
 	   <a href="#" class="blog-cards geo-color geography ">
 			<div class="overlay"></div>
@@ -44,7 +37,7 @@
 		 <div class="circle">
 		 </div>
 		 <p>History</p>
-	   </a>
+	   </a>-->
 	  </section>
     
 </body>

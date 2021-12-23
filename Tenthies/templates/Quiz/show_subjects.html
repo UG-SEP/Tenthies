@@ -11,7 +11,8 @@
     <h1>Subjects</h1>
     {% for sub in subjects %}
     <div>
-        <div>{{sub.subcode}}</div>
+        <div><img src="{{sub.subimg.url}}" alt=""></div>
+        <div style="background-color: {{sub.sub_bgcolor}};">{{sub.subcode}}</div>
         <div>{{sub.subname}}</div>
         <div>{{sub.chname}}</div>
         <div>{{sub.level}}</div>

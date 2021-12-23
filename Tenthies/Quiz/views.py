@@ -1,15 +1,12 @@
-from django.contrib.admin.helpers import checkbox
-from django.http import request
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from Quiz import models
 import random
-
 from User.views import deco_auth
-questions=[]
-i=0
-useranswer=[]
-subject=models.Subject()
+
+# global variables which is needed during the Quiz
+questions,i,useranswer,subject=[],0,[],models.Subject()
+
 def ShowSubjects(request):
     subjects=models.Subject.objects.all()
     res=render(request,'Quiz/show_subjects.html',{'subjects':subjects})
@@ -17,11 +14,13 @@ def ShowSubjects(request):
 
 @deco_auth
 def TakeTest(request):
+    # taking questions and i no of question as global one
     global questions,i
     all_questions=models.Question.objects.all()
     questions=getSpecificQuestions(all_questions,request)
+
     if(len(questions)==0):
-        return HttpResponse("<h1>Error No question found</h1>")
+        return HttpResponse("<h1 align='center'>Error No question found</h1>")
     random.shuffle(questions)
     i+=1
     res=render(request,'Quiz/show-question.html',{'question':questions[i-1],'qno':i})
@@ -29,12 +28,14 @@ def TakeTest(request):
 
 @deco_auth
 def ShowQues(request):
-    global questions,i
+    # using global variables
+    global questions,i,useranswer,subject
     useranswer.append(request.POST.getlist('choice'))
-    if(i==10):
+    if(i==subject.totalquestions):
         correct_answers=validate_answers(useranswer,questions)
-        per=calculate_per(10,correct_answers)
-        result=generate_result(correct_answers,10,per,request)
+        per=calculate_per(subject.totalquestions,correct_answers)
+        result=generate_result(correct_answers,subject.totalquestions,per,request)
+        reset_quiz()
         result.save()
         res = render(request,'Quiz/show-result.html',{'res':result})
         return res
@@ -80,3 +81,9 @@ def generate_result(correctanswers,totalquestions,percentage,request):
     res.user=request.user
     return res
 
+def reset_quiz():
+    global questions,i,useranswer,subject
+    questions=[]
+    i=0
+    useranswer=[]
+    subject=models.Subject()     

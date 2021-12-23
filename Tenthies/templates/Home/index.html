@@ -4,9 +4,10 @@
    <head>
       <meta charset="utf-8">
       <title>10thies | Home</title>
+      <link rel="icon" type="image/x-icon" href="{% static 'image/favicon.ico' %}">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-	  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
    </head>
    <body>
       <nav>
@@ -37,7 +38,7 @@
 		 <div  class="nav-items log">
 			 {% if user.is_authenticated %}
 			<li>
-				<a class="fas fa-user" href="http://localhost:8000/Profile"> Profile</a>
+				<a id="userlogo" class="fas fa-user" href="http://localhost:8000/Profile"></a>
 			</li>
 			{% else %}
 			<li>

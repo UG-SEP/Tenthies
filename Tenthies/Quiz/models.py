@@ -1,11 +1,17 @@
 from django.contrib.auth.models import User
 from django.db import models
+from Tenthies.settings import STATIC_DIR
+
 
 class Subject(models.Model):
     subcode=models.IntegerField()
-    subname=models.TextField()
+    subname=models.CharField(max_length=200)
     level=models.TextField()
-    chname=models.TextField()
+    chname=models.CharField(max_length=200)
+    totalquestions=models.IntegerField(default=10)
+    subimg=models.ImageField(upload_to=STATIC_DIR+'/images',default="")
+    sub_bgcolor=models.CharField(max_length=7,default="#000000")
+
     def __str__(self):
         return self.subname+' | '+self.chname+' | '+self.level
 
@@ -18,14 +24,19 @@ class Question(models.Model):
     option2=models.CharField(max_length=400)
     option3=models.CharField(max_length=400)
     option4=models.CharField(max_length=400)
-    answer=models.CharField(max_length=400,default='None')
+    answer=models.CharField(max_length=400)
     def __str__(self):
         return self.ques
 
-class QuizResult(Subject):
+class QuizResult(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     marksobtained = models.IntegerField()
     totalmarks = models.IntegerField()
     percentage = models.FloatField()
+    subcode=models.IntegerField()
+    subname=models.CharField(max_length=200)
+    level=models.TextField()
+    chname=models.CharField(max_length=200)
+
     def __str__(self):
         return str(self.subcode)+' | '+self.subname+' | '+ self.user.username

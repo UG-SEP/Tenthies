@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
 :root{
 	--main-color:#ff3d00;
+  --main-color-light:#ff531e;
 }
 
 *{
@@ -9,10 +10,9 @@
   outline: none;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
- 
 }
 section{
-	height: 72vh;
+	min-height: 80vh;
 	border:solid 1px rgb(196, 196, 196);
 }
 a{
@@ -22,7 +22,9 @@ a{
 body{
   background: #f2f2f2;
   text-decoration: none;
+  overflow-x: hidden;
 }
+/* -----------------------------------NAVBAR SECTION START------------------------------------ */
 nav{
   background: #171c24;
   display: flex;
@@ -57,12 +59,6 @@ nav .nav-items li a{
   font-weight: 500;
   text-decoration: none;
 }
-#userlogo{
-  padding:10px ;
-  margin: 15px;
-  border: solid orange 4px;
-  border-radius: 50%;
-}
 nav .log li {
 	color: white;
 	margin-left: 70%;
@@ -85,12 +81,6 @@ nav .user{
   cursor: pointer;
   display: none;
 }
-  .main-navigation {
-    padding-bottom:7px ;
-    border-bottom-style: solid;
-    border-bottom-color: yellow;
-    border-bottom-width: 3px;
-}
 nav .menu-icon span,
 nav .cancel-icon,
 nav .user{
@@ -108,12 +98,7 @@ nav .user{
   nav .logo{
     flex: 2;
     text-align: center;
-
   }
-  .color{
-     color:darkgrey;
-  }
-
   nav .nav-items{
     position: fixed;
     z-index: 99;
@@ -153,6 +138,122 @@ nav .user{
     display: block;
   }
 }
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXX NAVBAR SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* -----------------------------------SIGN UP SECTION START------------------------------------ */
+.signin-page{
+  height: 104vh;
+  background-color: rgb(235, 235, 235);
+}
+.signin-page .sign-content{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  z-index: 999;
+  text-align: center;
+  padding: 60px 32px;
+  width: 370px;
+  transform: translate(-50%,-50%);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+  border-radius: 15px;
+}
+.signin-page .sign-content header{
+  color: #222;
+  font-size: 33px;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: 'Montserrat',sans-serif;
+}
+.signin-page .field{
+  position: relative;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  background: rgba(255,255,255,0.94);
+}
+.signin-page .field span{
+  color: #222;
+  width: 40px;
+  line-height: 45px;
+}
+.signin-page .field input{
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #222;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
+}
+.signin-page .space{
+  margin-top: 16px;
+}
+.signin-page .show{
+  position: absolute;
+  right: 13px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+  display: none;
+  cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
+}
+.signin-page .pass-key:valid ~ .show{
+  display: block;
+}
+.signin-page .pass{
+  text-align: left;
+  margin: 20px 5px;
+}
+.signin-page .pass a{
+  color: #222;
+  text-decoration: none;
+  font-family: 'Poppins',sans-serif;
+}
+.signin-page .pass:hover a{
+  text-decoration: underline;
+}
+.signin-page .field input[type="submit"]{
+  background: var(--main-color);
+  border: 1px solid var(--main-color);
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
+}
+.signin-page .field input[type="submit"]:hover{
+  background: #ff531e;
+  transition: all .3s ease;
+}
+
+
+i span{
+  margin-left: 8px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
+}
+.signin-page .signup{
+  margin-top: 10px;
+  font-size: 17px;
+  color: #222;
+  font-family: 'Poppins',sans-serif;
+}
+.signin-page .signup a{
+  color: #3498db;
+  text-decoration: none;
+}
+.signin-page .signup a:hover{
+  text-decoration: underline;
+}
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXX SIGNUP SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* -----------------------------------LANDING PAGE SECTION START------------------------------------ */
 .content{
   position: absolute;
   top: 50%;
@@ -208,6 +309,20 @@ nav .logo.space{
   nav form{
     right: 30px;
   }
+  .content h1{
+    font-size: 50px;
+    
+  }
+  .content h3{
+    font-size:26px;
+  }
+  .content  p{
+    font-size: 18px;
+  }
+  .home-btn{
+    font-size: 18px;
+  }
+  
 }
 @media (max-width: 350px){
   nav .menu-icon,
@@ -216,8 +331,25 @@ nav .logo.space{
     margin: 0 10px;
     font-size: 16px;
   }
+  .content h1{
+    font-size: 40px;
+    
+  }
+  .content h3{
+    font-size:23px;
+  }
+  .content  p{
+    font-size: 15px;
+  }
+  .home-btn{
+    font-size: 17px;
+  }
 }
 
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXX LANDING PAGE SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+.home2{
+  min-height: 120vh;
+}
 .home2 {
 	background: #f2f4f8;
 	display: flex;
@@ -227,6 +359,7 @@ nav .logo.space{
 	height: 100vh;
 	font-family: "Open Sans";
   }
+/* -----------------------------------LINK CARDS PAGE SECTION START------------------------------------ */
 
 .education {
 	--bg-color: #ffd861;
@@ -256,7 +389,7 @@ nav .logo.space{
 	--box-shadow-color: rgba(220, 233, 255, 0.48);
   }
   
-  .card {
+  .blog-cards {
 	width: 220px;
 	height: 321px;
 	background: #fff;
@@ -270,38 +403,39 @@ nav .logo.space{
 	box-shadow: 0 14px 26px rgba(0,0,0,0.04);
 	transition: all 0.3s ease-out;
 	text-decoration: none;
+  padding-bottom: 20px;
   }
   
-  .card:hover {
+  .blog-cards:hover {
 	transform: translateY(-5px) scale(1.005) translateZ(0);
 	box-shadow: 0 24px 36px rgba(0,0,0,0.11),
 	  0 24px 46px var(--box-shadow-color);
   }
   
-  .card:hover .overlay {
+  .blog-cards:hover .overlay {
 	transform: scale(4) translateZ(0);
   }
   
-  .card:hover .circle {
+  .blog-cards:hover .circle {
 	border-color: var(--bg-color-light);
 	background: var(--bg-color);
   }
   
-  .card:hover .circle:after {
+  .blog-cards:hover .circle:after {
 	background: var(--bg-color-light);
   }
   
-  .card:hover p {
+  .blog-cards:hover p {
 	color: var(--text-color-hover);
   }
   
-  .card:active {
+  .blog-cards:active {
 	transform: scale(1) translateZ(0);
 	box-shadow: 0 15px 24px rgba(0,0,0,0.11),
 	  0 15px 24px var(--box-shadow-color);
   }
   
-  .card p {
+  .blog-cards p {
 	font-size: 17px;
 	color: #4C5656;
 	margin-top: 30px;
@@ -331,8 +465,8 @@ nav .logo.space{
 	position: absolute;
 	background: var(--bg-color);
 	border-radius: 50%;
-	top: 7px;
-	left: 7px;
+	top: 5.3px;
+	left: 5.5px;
 	transition: opacity 0.3s ease-out;
   }
   
@@ -352,3 +486,248 @@ nav .logo.space{
 	z-index: 0;
 	transition: transform 0.3s ease-out;
   }
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX LINK CARDS SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* -----------------------------------APPRECIATION PAGE SECTION START------------------------------------ */
+
+  .home3{
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+  }
+    
+  .home3-head{
+    position: absolute;
+    transform: translate(-50% -50%);
+    text-align: center;
+    width: 100%;
+    margin: 20px 0px ;
+  }
+  .home3-head h1{
+    font-size: 40px;
+  }
+   
+
+  .comic {
+    margin:80px 50px ;
+    display:flex;
+    flex-wrap:wrap;
+    font-family:'Comic Sans', cursive;
+    padding:1vmin;
+  }
+  
+  .talk-block {
+    background-color:#fff;
+    border:solid 2px #000;
+    box-shadow:0 6px 6px -6px #000;
+    display:inline-block;
+    flex:1 1;
+    height:200px;
+    margin:1vmin;
+    overflow:hidden;
+    position:relative;
+  }
+  
+  .text {
+    background-color:#fff;
+    border:solid 2px #000;
+    margin:0;
+    padding:3px 10px;
+  }
+  
+  .top-left {
+    left:-6px;
+    position:absolute;
+    top:-2px;
+    transform:skew(-15deg);
+  }
+  
+  .bottom-right {
+    bottom:-2px;
+    position:absolute;
+    right:-6px;
+    transform:skew(-15deg);
+  }
+  
+  .speech {
+    background-color:#fff;
+    border:solid 2px #000;
+    border-radius:12px;
+    display:inline-block;
+    margin:.5em;
+    padding:.5em 1em;
+    position:relative;
+  }
+  .speech span{
+    font-weight: 500;
+  }
+  
+  .speech:before {
+    border:solid 12px transparent;
+    border-left:solid 12px #000;
+    border-top:solid 12px #000;
+    bottom:-24px;
+    content:"";
+    height:0;
+    left:24px;
+    position:absolute;
+    transform:skew(-15deg);
+    width:0;
+  }
+  
+  .speech:after {
+    border:solid 10px transparent;
+    border-left:solid 10px #fff;
+    border-top:solid 10px #fff;
+    bottom:-19px;
+    content:"";
+    height:0;
+    left:27px;
+    position:absolute;
+    transform:skew(-15deg);
+    width:0;
+  }
+  
+  .talk-block:nth-child(1) {
+    flex-basis: 400px;
+  }
+  .talk-block:nth-child(2) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(3) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(4) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(5) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(6) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(7) {
+    flex-basis: 400px;
+  }
+  .talk-block:nth-child(8) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(9) {
+    flex-basis: 200px;
+  }
+  .talk-block:nth-child(4n+1) {
+    background-image:radial-gradient(circle, rgb(253, 253, 113), rgb(255, 204, 109));
+  }
+  
+  .talk-block:nth-child(4n+2) {
+    background-image:radial-gradient(circle, lightblue, rgb(121, 220, 253));
+  }
+  
+  .talk-block:nth-child(4n+3) {
+    background-image:radial-gradient(circle, palegreen, rgb(196, 236, 115));
+  }
+  
+  .talk-block:nth-child(4n+4) {
+    background-image:radial-gradient(circle, rgb(233, 162, 162), rgb(255, 140, 140));
+  }  
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXX APPRECIATION SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* -----------------------------------FOOTER SECTION START------------------------------------ */
+
+  .container{
+    max-width: 1170px;
+    margin:auto;
+  }
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ul{
+    list-style: none;
+  }
+  li{
+    text-align: justify;
+  }
+  .footer{
+    background-color:  #050505;
+      padding: 70px 0;
+  }
+  .footer-col{
+     width: 25%;
+     padding: 0 15px;
+  }
+  .footer-col h4{
+    font-size: 22px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+  } 
+  .footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+  }
+  .footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  .footer-col .footer-para {
+    letter-spacing: 2px;
+    text-align: initial;
+  }
+  .footer-col ul li a:hover{
+    color: #ffffff;
+    padding-left: 8px;
+  }
+  .footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin:0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+  }
+  .footer-col .social-links a:hover{
+    color: wheat;
+    background-color: var(--main-color);
+  }
+  
+  .end center{
+    padding: 5px;
+    font-size: 0.9375rem;
+    background: var(--main-color);
+  }
+  .end center span{
+    color: #fff8f8;
+  }
+  .end center a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .end center a:hover{
+    text-decoration: underline;
+  }
+  @media(max-width: 767px){
+    .footer-col{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+  }
+  @media(max-width: 574px){
+    .footer-col{
+      width: 100%;
+  }
+  }
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX FOOTER PAGE SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */

@@ -17,3 +17,6 @@ Quick Reference:
  
 * `Js` files are under static/js folder
     * `main.js` is the js file for the index.html
+
+
+![10thies](https://user-images.githubusercontent.com/75884061/147247847-559e7828-09e7-4673-8da0-a3accd83faf0.png)

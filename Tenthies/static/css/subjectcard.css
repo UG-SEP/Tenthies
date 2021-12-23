@@ -1,0 +1,154 @@
+import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+:root{
+	--main-color:#ff3d00;
+  --main-color-light:#ff531e;
+}
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+section{
+	height: 80vh;
+	border:solid 1px rgb(196, 196, 196);
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+body{
+  background: #f2f2f2;
+  text-decoration: none;
+}
+/* -----------------------------------NAVBAR SECTION START------------------------------------ */
+.home2 {
+	background: #f2f4f8;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	height: 100vh;
+	font-family: "Open Sans";
+  }
+.maths-color {
+	--bg-color: #7fff35;
+	--bg-color-light: #ffeeba;
+	--text-color-hover: #4C5656;
+	--box-shadow-color: rgba(255, 215, 97, 0.48);
+  }
+  
+  .geo-color {
+	--bg-color: #B8F9D3;
+	--bg-color-light: #e2fced;
+	--text-color-hover: #4C5656;
+	--box-shadow-color: rgba(184, 249, 211, 0.48);
+  }
+  
+  .history-color {
+	--bg-color: #ff5c5c;
+	--bg-color-light: #F0E7FF;
+	--text-color-hover: #fff;
+	--box-shadow-color: rgba(206, 178, 252, 0.48);
+  }  
+  .blog-cards {
+	width: 220px;
+	height: 321px;
+	background: #fff;
+	border-top-right-radius: 10px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+	transition: all 0.3s ease-out;
+	text-decoration: none;
+  }
+  
+  .blog-cards:hover {
+	transform: translateY(-5px) scale(1.005) translateZ(0);
+	box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+	  0 24px 46px var(--box-shadow-color);
+  }
+  
+  .blog-cards:hover .overlay {
+	transform: scale(4) translateZ(0);
+  }
+  
+  .blog-cards:hover .circle {
+	border-color: var(--bg-color-light);
+	background: var(--bg-color);
+  }
+  
+  
+  
+  .blog-cards:hover p {
+	color: var(--text-color-hover);
+  }
+  
+  .blog-cards:active {
+	transform: scale(1) translateZ(0);
+	box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+	  0 15px 24px var(--box-shadow-color);
+  }
+  
+  .blog-cards p {
+	font-size: 17px;
+	color: #4C5656;
+	margin-top: 30px;
+	z-index: 1000;
+	transition: color 0.3s ease-out;
+  }
+  
+  .circle {
+	width: 131px;
+	height: 131px;
+	border-radius: 50%;
+	background: #fff;
+	border: 2px solid var(--bg-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	transition: all 0.3s ease-out;
+  }
+  
+  .circle:after {
+	content: "";
+	width: 118px;
+	height: 118px;
+	display: block;
+    
+	position: absolute;
+	border-radius: 50%;
+	top: 5.3px;
+	left: 5.5px;
+	transition: opacity 0.3s ease-out;
+  }
+ .geography .circle:after{
+    background-image: url("./images/geography.jpg");
+  }
+ .maths .circle:after{
+    background-image: url("./images/math-icon.jpg");
+  }
+ .history .circle:after{
+    background-image: url("./images/history\ \(2\).jpg");
+  }
+  
+  
+  .overlay {
+	width: 118px;
+	position: absolute; 
+	height: 118px;
+	border-radius: 50%;
+	background: var(--bg-color);
+	top: 70px;
+	left: 50px;
+	z-index: 0;
+	transition: transform 0.3s ease-out;
+  }
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX SUBJECT CARDS SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */

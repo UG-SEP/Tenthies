@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
 :root{
-	--main-color:#ff3d00;
+    --main-color:#ff3d00;
   --main-color-light:#ff531e;
 }
 
@@ -12,12 +12,12 @@
   font-family: 'Montserrat', sans-serif;
 }
 section{
-	min-height: 80vh;
-	border:solid 1px rgb(196, 196, 196);
+    min-height: 80vh;
+    border:solid 1px rgb(196, 196, 196);
 }
 a{
-	color: white;
-	text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 body{
   background: #f2f2f2;
@@ -34,13 +34,6 @@ nav{
   height: 70px;
   padding: 0 100px;
 }
-#userlogo{
-  padding:10px ;
-  margin: 15px;
-  border: solid orange 4px;
-  border-radius: 50%;
-}
-
 nav .logo{
   color: #fff;
   font-size: 30px;
@@ -48,8 +41,8 @@ nav .logo{
   letter-spacing: -1px;
 }
 nav .logo:hover {
-	transform: scale(1.1);
-	transition: all .5s ease;
+    transform: scale(1.1);
+    transition: all .5s ease;
 }
 nav .nav-items{
   display: flex;
@@ -67,17 +60,11 @@ nav .nav-items li a{
   text-decoration: none;
 }
 nav .log li {
-	color: white;
-	margin-left: 70%;
-}
-.main-navigation {
-    padding-bottom:7px ;
-    border-bottom-style: solid;
-    border-bottom-color: yellow;
-    border-bottom-width: 3px;
+    color: white;
+    margin-left: 70%;
 }
 nav .user span{
-	color: white;
+    color: white;
 }
 nav .nav-items li a:hover{
   color: var(--main-color);
@@ -94,9 +81,6 @@ nav .user{
   cursor: pointer;
   display: none;
 }
-.color{
-     color:darkgrey;
-  }
 nav .menu-icon span,
 nav .cancel-icon,
 nav .user{
@@ -156,118 +140,7 @@ nav .user{
 }
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX NAVBAR SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
-/* -----------------------------------SIGN UP SECTION START------------------------------------ */
-.signin-page{
-  height: 104vh;
-  background-color: rgb(235, 235, 235);
-}
-.signin-page .sign-content{
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  z-index: 999;
-  text-align: center;
-  padding: 60px 32px;
-  width: 370px;
-  transform: translate(-50%,-50%);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-  border-radius: 15px;
-}
-.signin-page .sign-content header{
-  color: #222;
-  font-size: 33px;
-  font-weight: 600;
-  margin: 0 0 35px 0;
-  font-family: 'Montserrat',sans-serif;
-}
-.signin-page .field{
-  position: relative;
-  height: 45px;
-  width: 100%;
-  display: flex;
-  background: rgba(255,255,255,0.94);
-}
-.signin-page .field span{
-  color: #222;
-  width: 40px;
-  line-height: 45px;
-}
-.signin-page .field input{
-  height: 100%;
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #222;
-  font-size: 16px;
-  font-family: 'Poppins',sans-serif;
-}
-.signin-page .space{
-  margin-top: 16px;
-}
-.signin-page .show{
-  position: absolute;
-  right: 13px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #222;
-  display: none;
-  cursor: pointer;
-  font-family: 'Montserrat',sans-serif;
-}
-.signin-page .pass-key:valid ~ .show{
-  display: block;
-}
-.signin-page .pass{
-  text-align: left;
-  margin: 20px 5px;
-}
-.signin-page .pass a{
-  color: #222;
-  text-decoration: none;
-  font-family: 'Poppins',sans-serif;
-}
-.signin-page .pass:hover a{
-  text-decoration: underline;
-}
-.signin-page .field input[type="submit"]{
-  background: var(--main-color);
-  border: 1px solid var(--main-color);
-  color: white;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'Montserrat',sans-serif;
-}
-.signin-page .field input[type="submit"]:hover{
-  background: #ff531e;
-  transition: all .3s ease;
-}
 
-
-i span{
-  margin-left: 8px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 16px;
-  font-family: 'Poppins',sans-serif;
-}
-.signin-page .signup{
-  margin-top: 10px;
-  font-size: 17px;
-  color: #222;
-  font-family: 'Poppins',sans-serif;
-}
-.signin-page .signup a{
-  color: #3498db;
-  text-decoration: none;
-}
-.signin-page .signup a:hover{
-  text-decoration: underline;
-}
-/* XXXXXXXXXXXXXXXXXXXXXXXXXXXX SIGNUP SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
 /* -----------------------------------LANDING PAGE SECTION START------------------------------------ */
 .content{
@@ -293,21 +166,21 @@ i span{
  
 }
 .home-btn{
-	margin-top: 15px;
-	font-size: 20px;
-	font-weight: 500;
-	padding: 13px 32px;
-	border-radius: 50px;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 13px 32px;
+    border-radius: 50px;
     background-color: var(--main-color);
     color: white;
-	border-color:var(--main-color);
+    border-color:var(--main-color);
 }
 .home-btn:hover {
-	
-	transform: translateY(-3px);
+    
+    transform: translateY(-3px);
 
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-	transition: ease all .3s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: ease all .3s;
   }
 .space{
   margin: 10px 0;
@@ -367,140 +240,140 @@ nav .logo.space{
   min-height: 120vh;
 }
 .home2 {
-	background: #f2f4f8;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-wrap: wrap;
-	height: 100vh;
-	font-family: "Open Sans";
+    background: #f2f4f8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    font-family: "Open Sans";
   }
 /* -----------------------------------LINK CARDS PAGE SECTION START------------------------------------ */
 
 .education {
-	--bg-color: #ffd861;
-	--bg-color-light: #ffeeba;
-	--text-color-hover: #4C5656;
-	--box-shadow-color: rgba(255, 215, 97, 0.48);
+    --bg-color: #ffd861;
+    --bg-color-light: #ffeeba;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(255, 215, 97, 0.48);
   }
   
   .credentialing {
-	--bg-color: #B8F9D3;
-	--bg-color-light: #e2fced;
-	--text-color-hover: #4C5656;
-	--box-shadow-color: rgba(184, 249, 211, 0.48);
+    --bg-color: #B8F9D3;
+    --bg-color-light: #e2fced;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(184, 249, 211, 0.48);
   }
   
   .wallet {
-	--bg-color: #CEB2FC;
-	--bg-color-light: #F0E7FF;
-	--text-color-hover: #fff;
-	--box-shadow-color: rgba(206, 178, 252, 0.48);
+    --bg-color: #CEB2FC;
+    --bg-color-light: #F0E7FF;
+    --text-color-hover: #fff;
+    --box-shadow-color: rgba(206, 178, 252, 0.48);
   }
   
   .human-resources {
-	--bg-color: #DCE9FF;
-	--bg-color-light: #f1f7ff;
-	--text-color-hover: #4C5656;
-	--box-shadow-color: rgba(220, 233, 255, 0.48);
+    --bg-color: #DCE9FF;
+    --bg-color-light: #f1f7ff;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(220, 233, 255, 0.48);
   }
   
   .blog-cards {
-	width: 220px;
-	height: 321px;
-	background: #fff;
-	border-top-right-radius: 10px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	box-shadow: 0 14px 26px rgba(0,0,0,0.04);
-	transition: all 0.3s ease-out;
-	text-decoration: none;
+    width: 220px;
+    height: 321px;
+    background: #fff;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
   padding-bottom: 20px;
   }
   
   .blog-cards:hover {
-	transform: translateY(-5px) scale(1.005) translateZ(0);
-	box-shadow: 0 24px 36px rgba(0,0,0,0.11),
-	  0 24px 46px var(--box-shadow-color);
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+    box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+      0 24px 46px var(--box-shadow-color);
   }
   
   .blog-cards:hover .overlay {
-	transform: scale(4) translateZ(0);
+    transform: scale(4) translateZ(0);
   }
   
   .blog-cards:hover .circle {
-	border-color: var(--bg-color-light);
-	background: var(--bg-color);
+    border-color: var(--bg-color-light);
+    background: var(--bg-color);
   }
   
   .blog-cards:hover .circle:after {
-	background: var(--bg-color-light);
+    background: var(--bg-color-light);
   }
   
   .blog-cards:hover p {
-	color: var(--text-color-hover);
+    color: var(--text-color-hover);
   }
   
   .blog-cards:active {
-	transform: scale(1) translateZ(0);
-	box-shadow: 0 15px 24px rgba(0,0,0,0.11),
-	  0 15px 24px var(--box-shadow-color);
+    transform: scale(1) translateZ(0);
+    box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+      0 15px 24px var(--box-shadow-color);
   }
   
   .blog-cards p {
-	font-size: 17px;
-	color: #4C5656;
-	margin-top: 30px;
-	z-index: 1000;
-	transition: color 0.3s ease-out;
+    font-size: 17px;
+    color: #4C5656;
+    margin-top: 30px;
+    z-index: 1000;
+    transition: color 0.3s ease-out;
   }
   
   .circle {
-	width: 131px;
-	height: 131px;
-	border-radius: 50%;
-	background: #fff;
-	border: 2px solid var(--bg-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	z-index: 1;
-	transition: all 0.3s ease-out;
+    width: 131px;
+    height: 131px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-out;
   }
   
   .circle:after {
-	content: "";
-	width: 118px;
-	height: 118px;
-	display: block;
-	position: absolute;
-	background: var(--bg-color);
-	border-radius: 50%;
-	top: 5.3px;
-	left: 5.5px;
-	transition: opacity 0.3s ease-out;
+    content: "";
+    width: 118px;
+    height: 118px;
+    display: block;
+    position: absolute;
+    background: var(--bg-color);
+    border-radius: 50%;
+    top: 5.3px;
+    left: 5.5px;
+    transition: opacity 0.3s ease-out;
   }
   
   .circle svg {
-	z-index: 10000;
-	transform: translateZ(0);
+    z-index: 10000;
+    transform: translateZ(0);
   }
   
   .overlay {
-	width: 118px;
-	position: absolute; 
-	height: 118px;
-	border-radius: 50%;
-	background: var(--bg-color);
-	top: 70px;
-	left: 50px;
-	z-index: 0;
-	transition: transform 0.3s ease-out;
+    width: 118px;
+    position: absolute; 
+    height: 118px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    top: 70px;
+    left: 50px;
+    z-index: 0;
+    transition: transform 0.3s ease-out;
   }
   /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX LINK CARDS SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 

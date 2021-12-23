@@ -1,4 +1,4 @@
-import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
 :root{
 	--main-color:#ff3d00;
   --main-color-light:#ff531e;
@@ -32,25 +32,12 @@ body{
 	height: 100vh;
 	font-family: "Open Sans";
   }
-.maths-color {
-	--bg-color: #7fff35;
-	--bg-color-light: #ffeeba;
-	--text-color-hover: #4C5656;
-	--box-shadow-color: rgba(255, 215, 97, 0.48);
-  }
-  
-  .geo-color {
-	--bg-color: #B8F9D3;
-	--bg-color-light: #e2fced;
-	--text-color-hover: #4C5656;
-	--box-shadow-color: rgba(184, 249, 211, 0.48);
-  }
   
   .history-color {
 	--bg-color: #ff5c5c;
 	--bg-color-light: #F0E7FF;
 	--text-color-hover: #fff;
-	--box-shadow-color: rgba(206, 178, 252, 0.48);
+	--box-shadow-color: #ceb2fc7a;
   }  
   .blog-cards {
 	width: 220px;
@@ -129,16 +116,6 @@ body{
 	left: 5.5px;
 	transition: opacity 0.3s ease-out;
   }
- .geography .circle:after{
-    background-image: url("./images/geography.jpg");
-  }
- .maths .circle:after{
-    background-image: url("./images/math-icon.jpg");
-  }
- .history .circle:after{
-    background-image: url("./images/history\ \(2\).jpg");
-  }
-  
   
   .overlay {
 	width: 118px;

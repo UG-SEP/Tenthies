@@ -8,9 +8,9 @@ from User.views import deco_auth
 questions,i,useranswer,subject=[],0,[],models.Subject()
 
 def ShowSubjects(request):
-    subjects=models.Subject.objects.all()
-    res=render(request,'Quiz/show_subjects.html',{'subjects':subjects})
-    return res
+    dupsubjects=models.Subject.objects.all()
+    subjects=getSubjects(dupsubjects)
+    return render(request,'Quiz/show_subjects.html',{'subjects':subjects})
 
 @deco_auth
 def TakeTest(request):
@@ -22,16 +22,18 @@ def TakeTest(request):
     if(len(questions)==0):
         return HttpResponse("<h1 align='center'>Error No question found</h1>")
     random.shuffle(questions)
-    i+=1
-    res=render(request,'Quiz/show-question.html',{'question':questions[i-1],'qno':i})
+    res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1})
     return res
 
 @deco_auth
 def ShowQues(request):
     # using global variables
     global questions,i,useranswer,subject
+
+    if request.GET.get('isclicked') == True:
+        i+=1
     useranswer.append(request.POST.getlist('choice'))
-    if(i==subject.totalquestions):
+    if(i==subject.totalquestions-1):
         correct_answers=validate_answers(useranswer,questions)
         per=calculate_per(subject.totalquestions,correct_answers)
         result=generate_result(correct_answers,subject.totalquestions,per,request)
@@ -40,7 +42,7 @@ def ShowQues(request):
         res = render(request,'Quiz/show-result.html',{'res':result})
         return res
     i+=1
-    res=render(request,'Quiz/show-question.html',{'question':questions[i-1],'qno':i})
+    res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1})
     return res
 
 def getSpecificQuestions(all_questions,request):
@@ -86,4 +88,24 @@ def reset_quiz():
     questions=[]
     i=0
     useranswer=[]
-    subject=models.Subject()     
+    subject=models.Subject()
+
+def ShowTest(request):
+    subname=request.GET.get('subname')
+    sub_test=get_subjectTest(subname)
+    return render(request,'Quiz/show-test.html',{'test_sheet':sub_test,'subname':subname})
+
+def get_subjectTest(subname):
+    subjects=models.Subject.objects.all()
+    return [sub for sub in subjects if sub.subname==subname]
+
+def getSubjects(dsubjects):
+    subjects=[]
+    subnames=[]
+    for sub in dsubjects:
+        if(sub.subname in subnames):
+            pass
+        else:
+            subjects.append(sub)
+            subnames.append(sub.subname)
+    return subjects

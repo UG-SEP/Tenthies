@@ -12,17 +12,8 @@
  
 }
 section{
-  padding-bottom: 20px;
   height: 72vh;
   border:solid 1px rgb(196, 196, 196);
-  height: auto;
-  width: auto;
-}
-section:nth-child(2n){
-    background-color: #9e9b9b29;
-}
-section:nth-child(2n+1){
-    background-color: white;
 }
 a{
   color: white;
@@ -164,93 +155,65 @@ nav .user{
 
 
 
-.quiz{
-  padding-top:1% ;
-  background-color: lightgrey;
+
+.heading{
+    color: orangered;
+    background-color:#171c24 ;
+    display: block;
+    padding: 10px;
+    border: solid 3px black;
+    text-align: center;
+    font-size: 20px;
+}
+.heading span{
+
+  margin-left: 15px;
 }
 
-.quiz-heading{
-
-  display: block;
-  align-content: center;
-
+.Containers {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-bottom: 20px;
+    height: 30vh;
+}
+.Containers button{
+  align-self: center;
 }
 
-.quiz-heading h1{
+.layout{
 
-  font-size: 64px;
-  color: orangered;
-  text-align: center;
-  background: #171c24;
-  border: solid gray 10px;
-  margin-bottom: 1%;
+  padding: 15px;
+  margin: 15px;
+  border: solid 1px gray;
+  border-radius: 20px;  
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: offset 0 0 10px;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-/* Container for flexboxes */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Create four equal columns */
-.column {
-  flex: 8;
-  padding: 20px;
-}
-.column a{
-  color: black;
-}
-
-/* On screens that are 992px wide or less, go from four columns to two columns */
-@media screen and (max-width: 992px) {
-  .column {
-    flex: 25%;
-  }
-}
-
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    flex: 50%;
-  }
-}
-.h4 {
-  background: grey;
+.layout div{
+  padding: 3px;
 }
 
 
-/*Subject names*/
-
-.heading-logo{
-
-  display: inline;
-  height: 50px;
-  width: 50px;
-  float: left;
-  padding-right: 20px;
+.styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: orangered;
+    background-image: linear-gradient(to top left,rgba(0, 0, 0, .2),rgba(0, 0, 0, .2) 30%,rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-.heading-center{
-  
-  display: absolute;
-  color: orangered ;
-  background-color: #171c24;
-  font-size: 28px;
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+.styled:hover {
+    background-color: red;
 }
 
-.column h3{
-
-  text-align: center;
-  padding: 10px;
-  font-size: 24px;
-  border-bottom: 8px solid rgba(60,164,150,0.6);
-  border-radius: 40px 40px 40px 40px;
-  margin-bottom: 25px;
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),inset 2px 2px 3px rgba(0, 0, 0, .6);
 }

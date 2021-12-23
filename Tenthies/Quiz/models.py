@@ -11,6 +11,9 @@ class Subject(models.Model):
     totalquestions=models.IntegerField(default=10)
     subimg=models.ImageField(upload_to=STATIC_DIR+'/images',default="")
     sub_bgcolor=models.CharField(max_length=7,default="#000000")
+    sub_bgcolor_light=models.CharField(max_length=10,default="#000000")
+    sub_textcolor_hover=models.CharField(max_length=10,default="#000000")
+    sub_boxshadow_color=models.CharField(max_length=10,default="#000000")
 
     def __str__(self):
         return self.subname+' | '+self.chname+' | '+self.level

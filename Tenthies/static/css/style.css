@@ -34,6 +34,13 @@ nav{
   height: 70px;
   padding: 0 100px;
 }
+#userlogo{
+  padding:10px ;
+  margin: 15px;
+  border: solid orange 4px;
+  border-radius: 50%;
+}
+
 nav .logo{
   color: #fff;
   font-size: 30px;
@@ -63,6 +70,12 @@ nav .log li {
 	color: white;
 	margin-left: 70%;
 }
+.main-navigation {
+    padding-bottom:7px ;
+    border-bottom-style: solid;
+    border-bottom-color: yellow;
+    border-bottom-width: 3px;
+}
 nav .user span{
 	color: white;
 }
@@ -81,6 +94,9 @@ nav .user{
   cursor: pointer;
   display: none;
 }
+.color{
+     color:darkgrey;
+  }
 nav .menu-icon span,
 nav .cancel-icon,
 nav .user{

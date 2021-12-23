@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+     <link rel="stylesheet" href="../static/css/stylequizquestions.css">
+   </head>
+   <body>
+
+    <!-- XXXXXXXXXXXX NAVIGATION XXXXXXXXXXXX -->
+       <nav>
+         <div class="menu-icon">
+            <span class="fas fa-bars"></span>
+         </div>
+         <div class="logo">
+          <a href="index.html"><span style="color: var(--main-color) ;">10</span>thies</a>
+         </div>
+         <div class="nav-items">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Quiz</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">QuickMap</a></li>
+            <li><a href="#">Guide</a></li>
+         </div>
+         <div class="user">
+          <a  href=""><span  class="fas fa-user"></span></a>
+         </div>
+         <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+         </div>
+       <div  class="nav-items log">
+         <li>
+            <a class="fas fa-user"> Sign-Up</a>
+         </li>
+       </div>
+         
+      </nav>
+      <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <h2 id="question">Question text</h2>
+        <ul>
+          <li>
+            <input type="radio" name="answer" id="a" class="answer">
+            <label for="a" id="a_text">Question</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="b" class="answer">
+            <label for="b" id="b_text">Question</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="c" class="answer">
+            <label for="c" id="c_text">Question</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="d" class="answer">
+            <label for="d" id="d_text">Question</label>
+          </li>
+        </ul>
+      </div>
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
+    </div>
+    <script src="script.js"></script>

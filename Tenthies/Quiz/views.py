@@ -10,7 +10,7 @@ questions,i,useranswer,subject=[],0,[],models.Subject()
 def ShowSubjects(request):
     dupsubjects=models.Subject.objects.all()
     subjects=getSubjects(dupsubjects)
-    return render(request,'Quiz/show_subjects.html',{'subjects':subjects})
+    return render(request,'Quiz/show_subjects.html',{'subjects':subjects,'goto':'Quiz/show-test'})
 
 @deco_auth
 def TakeTest(request):
@@ -28,12 +28,11 @@ def TakeTest(request):
 @deco_auth
 def ShowQues(request):
     # using global variables
-    global questions,i,useranswer,subject
-
-    if request.GET.get('isclicked') == True:
-        i+=1
-    useranswer.append(request.POST.getlist('choice'))
+    global questions,useranswer,subject,i
+    print(request.GET.getlist('choice'))
+    useranswer.append(request.GET.getlist('choice'))
     if(i==subject.totalquestions-1):
+        print(useranswer)
         correct_answers=validate_answers(useranswer,questions)
         per=calculate_per(subject.totalquestions,correct_answers)
         result=generate_result(correct_answers,subject.totalquestions,per,request)

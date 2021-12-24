@@ -1,19 +1,48 @@
-<!DOCTYPE html>
+{% extends 'Home/nav.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for res in resources %}
-    <div>{{res.subcode}}</div>
-    <div>{{res.subname}}</div>
-    <div>{{res.chname}}</div>
-    <div><embed src="{{res.pdf.url}}" type="application/pdf" width="100%" height="600px" /></div>
-    {{res.pdfs}}
-    {% endfor %}
-</body>
-</html>
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style-resources.css' %}">
+      <div class=heading>
+         <h1><i class="fas fa-calculator"><span>{{subname}}</span></i></h1>
+      </div>
+      {% for res in resources %}
+      <section class="Containers">
+         <div class="layout">
+            {% if name == 'resources' %}
+            <iframe
+             src="{{res.pdf.url}}"
+             frameBorder="0"
+             scrolling="auto"
+             height="100%"
+             width="25%"
+             align="right"
+             ></iframe>
+             {% else %}
+             <img src="{{res.quickmap.url}}" alt="W3Schools" width="20%" height="100%" align="right" margin-right="20px">
+             {% endif %}
+         <div class="Subcode">{{sub.subcode}}</div>
+         <div class="Chname">{{sub.subname}}</div>
+         <div class="Level">{{sub.chname}}</div> <br>
+         {% if name == 'resources' %}
+         <div class="buttoncenter"><a href="{{res.pdf.url}}"><button class="favorite styled"type="button">
+          PREVIEW
+         </button></a>
+      </div>
+       <div class="buttoncenter"><a href="{{res.pdf.url}}" download=""><button class="favorite styled"type="button">
+          DOWNLOAD
+         </button></a>
+      </div>
+      {% else %}
+      <div class="buttoncenter"><a href="{{res.quickmap.url}}"><button class="favorite styled"type="button">
+         PREVIEW
+        </button></a>
+     </div>
+      <div class="buttoncenter"><a href="{{res.quickmap.url}}" download=""><button class="favorite styled"type="button">
+         DOWNLOAD
+        </button></a>
+     </div>
+     {% endif %}
+      </div>
+   </section>
+   {% endfor %}
+{% endblock %}

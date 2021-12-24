@@ -1,60 +1,6 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title></title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   </head>
-   <body>
-
-    <!-- XXXXXXXXXXXX NAVIGATION XXXXXXXXXXXX -->
-       <nav>
-         <div class="menu-icon">
-            <span class="fas fa-bars"></span>
-         </div>
-         <div class="logo">
-          <a href="index.html"><span style="color: var(--main-color) ;">10</span>thies</a>
-         </div>
-         <div class="nav-items">
-            <li><a href="http://localhost:8000">Home</a></li>
-            <li><a href="http://localhost:8000/Quiz">Quiz</a></li>
-            <li><a href="http://localhost:8000/resources">Resources</a></li>
-            <li><a href="http://localhost:8000/quickmap">QuickMap</a></li>
-            <li><a href="#">Guide</a></li>
-         </div>
-		 {% if user.is_authenticated %}
-		 <div class="user">
-			<a  href="http://localhost:8000/Profile"><span  class="fas fa-user"></span></a>
-		   </div>
-		   
-		 {% else %}
-         <div class="user">
-          <a  href="http://localhost:8000/User/signup"><span  class="fas fa-user"></span></a>
-         </div>
-		 {% endif %}
-         <div class="cancel-icon">
-            <span class="fas fa-times"></span>
-         </div>
-		 {% if user.is_authenticated %}
-		 <div  class="nav-items log">
-			<li>
-			   <a class="fas fa-user" href="http://localhost:8000/Profile"></a>
-			</li>
-		  </div>
-		  
-		 {% else %}
-       <div  class="nav-items log">
-         <li>
-            <a class="fas fa-user" href="http://localhost:8000/User/signup"> Sign-Up</a>
-         </li>
-       </div>
-	   {% endif %}
-         
-      </nav>
-    <!-- XXXXXXXXXXXX LANDING PAGE XXXXXXXXXXXX -->
+{% extends 'Home/nav.html' %}
+{% block content %} 
+ <!-- XXXXXXXXXXXX LANDING PAGE XXXXXXXXXXXX -->
      <section class="home1" ><div class="content">
         <h1 class="space"><span style="color: var(--main-color) ;">10</span>thies</h1>
          
@@ -272,7 +218,5 @@
       <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
      </center>
    </div>
-   
-     <script src="{% static 'js/main.js' %}"></script>
-   </body>
-</html>
+
+{% endblock %}

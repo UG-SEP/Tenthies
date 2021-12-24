@@ -1,5 +1,6 @@
 from django.urls import path
-from Resources.views import ShowResources
+from Resources.views import Resources, SubjectResources
 urlpatterns = [
-    path('',ShowResources),
+    path('',Resources),
+    path('subject-resources',SubjectResources)
 ]

@@ -60,56 +60,57 @@
 		</div>
 	 </section> 
 
-	 <!-- XXXXXXXXXXXX FOOTER XXXXXXXXXXXX -->
-	 <footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="footer-col">
-					<h4><span style="color: var(--main-color) ;">10</span>thies</h4>
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Quiz</a></li>
-						<li><a href="#">Resources</a></li>
-						<li><a href="#">Quickmap</a></li>
-						<li><a href="#">Guide</a></li>
-					</ul>
-				</div>
-				<div class="footer-col">
-					<h4><span style="color: var(--main-color) ;">Q</span>ueries</h4>
-					<ul>
-						<li><a href="#">The Team</a></li>
-						<li><a href="#">Report</a></li>
-						<li><a href="#">Ad Service</a></li>
-						
-					</ul>
-				</div>
-				<div class="footer-col">
-					<h4><span style="color: var(--main-color) ;">B</span>ussiness</h4>
-					<ul>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Partners</a></li>
-						<li><a href="#">Terms and policy</a></li>
-					</ul>
-				</div>
-				<div class="footer-col">
-					<h4><span style="color: var(--main-color) ;">F</span>ollow</h4>
-					<div class="social-links">
-						<a href="#"><i class="fab fa-linkedin"></i></a>
-						<a href="#"><i class="fab fa-facebook-f"></i></a>
-						<a href="#"><i class="fab fa-instagram"></i></a>
-						<a href="#"><i class="fab fa-twitter"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-   </footer>
-     <!-- XXXXXXXXXXXX COPYRIGHT CLAIM XXXXXXXXXXXX -->
-   <div class="end">
-	<center>
-		<span class="credit"><a href="#">10thies</a> | </span>
-		<span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
-	  </center>
-   </div>
+	<!-- XXXXXXXXXXXX FOOTER XXXXXXXXXXXX -->
+  <footer class="footer">
+	<div class="container">
+	   <div class="row">
+		  <div class="footer-col">
+			 <h4><span style="color: var(--main-color) ;">10</span>thies</h4>
+			 <ul>
+				<li><a href="http://localhost:8000">Home</a></li>
+				<li><a href="http://localhost:8000/Quiz">Quiz</a></li>
+				<li><a href="http://localhost:8000/resources">Resources</a></li>
+				<li><a href="http://localhost:8000/quickmap">Quickmap</a></li>
+				<li><a href="#">Guide</a></li>
+			 </ul>
+		  </div>
+		  <div class="footer-col">
+			 <h4><span style="color: var(--main-color) ;">Q</span>ueries</h4>
+			 <ul>
+				<li><a href="{% url 'construction' %}">The Team</a></li>
+				<li><a href="{% url 'construction' %}">Report</a></li>
+				<li><a href="{% url 'construction' %}">Ad Service</a></li>
+				
+			 </ul>
+		  </div>
+		  <div class="footer-col">
+			 <h4><span style="color: var(--main-color) ;">B</span>ussiness</h4>
+			 <ul>
+				<li><a href="{% url 'construction' %}">Privacy Policy</a></li>
+				<li><a href="{% url 'contact-us' %}">Contact Us</a></li>
+				<li><a href="{% url 'construction' %}">Partners</a></li>
+				<li><a href="{% url 'construction' %}">Terms and policy</a></li>
+			 </ul>
+		  </div>
+		  <div class="footer-col">
+			 <h4><span style="color: var(--main-color) ;">F</span>ollow</h4>
+			 <div class="social-links">
+				<a href="#"><i class="fab fa-linkedin"></i></a>
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+				<a href="#"><i class="fab fa-instagram"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </footer>
+   <!-- XXXXXXXXXXXX COPYRIGHT CLAIM XXXXXXXXXXXX -->
+ <div class="end">
+ <center>
+	<span class="credit"><a href="{% url 'home' %}">10thies</a> | </span>
+	<span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
+   </center>
+ </div>
+
 
 {% endblock %}

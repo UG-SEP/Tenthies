@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="http://localhost:8000/Quiz/show-ques" method="get">
-        {% csrf_token %}
-        <div>{{qno}}</div>
-        <div>{{question.ques}}</div>
-        <input type="radio" name="choice" value="{{question.option1}}" checked>{{question.option1}}
-        <input type="radio" name="choice" value="{{question.option2}}">{{question.option2}}
-        <input type="radio" name="choice" value="{{question.option3}}">{{question.option3}}
-        <input type="radio" name="choice" value="{{question.option4}}">{{question.option4}}
-        <input type="submit" value="Next">
+{% load static %}
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="{% static 'css/stylequizquestions.css' %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <form action="http://localhost:8000/Quiz/show-ques" class="form" method="post">
+        {% csrf_token %}<br>
+        <h2><div class="question">{{qno}}</div></h2>
+        <h2><div class="question">{{question.ques}}</div></h2><br>
+        <input type="radio" name="choice" id="a" class="answer" value="{{question.option1}}" checked><label for="a" id="a_text">{{question.option1}}</label><br>
+
+        <input type="radio" name="choice" id="b" class="answer" value="{{question.option2}}"><label for="b" id="b_text">{{question.option2}}</label><br>
+
+        <input type="radio" name="choice" id="c" class="answer" value="{{question.option3}}"><label for="c" id="c_text">{{question.option3}}</label><br>
+
+        <input type="radio" name="choice" id="d" class="answer" value="{{question.option4}}"><label for="d" id="d_text">{{question.option4}}</label><br><br>
+        <input type="submit" class="button" value="Next">
     </form>
-</body>
-</html>
+    </div>
+</div>
+  </body>
+  </html>

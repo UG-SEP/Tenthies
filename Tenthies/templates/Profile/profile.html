@@ -1,4 +1,5 @@
 {% extends 'Home/nav.html' %}
+{% block title %} 10thies | Profile {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
     <div>Username: {{user.username}}</div>

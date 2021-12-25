@@ -1,4 +1,5 @@
 {% extends 'Home/nav.html' %}
+{% block title %} 10thies | Home {% endblock %}
 {% block content %} 
  <!-- XXXXXXXXXXXX LANDING PAGE XXXXXXXXXXXX -->
      <section class="home1" ><div class="content">
@@ -184,19 +185,19 @@
             <div class="footer-col">
                <h4><span style="color: var(--main-color) ;">Q</span>ueries</h4>
                <ul>
-                  <li><a href="#">The Team</a></li>
-                  <li><a href="#">Report</a></li>
-                  <li><a href="#">Ad Service</a></li>
+                  <li><a href="{% url 'construction' %}">The Team</a></li>
+                  <li><a href="{% url 'construction' %}">Report</a></li>
+                  <li><a href="{% url 'construction' %}">Ad Service</a></li>
                   
                </ul>
             </div>
             <div class="footer-col">
                <h4><span style="color: var(--main-color) ;">B</span>ussiness</h4>
                <ul>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Partners</a></li>
-                  <li><a href="#">Terms and policy</a></li>
+                  <li><a href="{% url 'construction' %}">Privacy Policy</a></li>
+                  <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
+                  <li><a href="{% url 'construction' %}">Partners</a></li>
+                  <li><a href="{% url 'construction' %}">Terms and policy</a></li>
                </ul>
             </div>
             <div class="footer-col">
@@ -214,7 +215,7 @@
      <!-- XXXXXXXXXXXX COPYRIGHT CLAIM XXXXXXXXXXXX -->
    <div class="end">
    <center>
-      <span class="credit"><a href="#">10thies</a> | </span>
+      <span class="credit"><a href="{% url 'home' %}">10thies</a> | </span>
       <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
      </center>
    </div>

@@ -50,3 +50,11 @@ else{
     return false
 }
 }
+
+function change(){
+   var password=document.getElementById('email')
+   if(email.type == "password")
+   email.type='text'
+   else
+   email.type='password'
+}

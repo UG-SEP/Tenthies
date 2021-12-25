@@ -8,14 +8,13 @@ from Quiz.models import Subject
 from User.views import deco_auth
 
 @xframe_options_exempt
-@deco_auth
 def SubjectResources(request):
     subname=request.GET.get('subname')
     resources=get_subjectResources(subname)
+    print(len(resources))
     res=render(request,'Resources/show-resources.html',{'resources': resources,'subname':subname,'name':'resources'})
     return res
 
-@deco_auth
 def Resources(request):
     subjects=getSubjects(Subject.objects.all())
     return render(request,'Quiz/show_subjects.html',{'subjects':subjects,'goto':'resources/subject-resources'})

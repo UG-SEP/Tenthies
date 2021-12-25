@@ -4,14 +4,12 @@ from Quiz.views import getSubjects
 from User.views import deco_auth
 from Quiz.models import Subject
 
-@deco_auth
 def SubjectQuickMap(request):
     subname= request.GET.get('subname')
     quickmaps=get_subjectQuickMap(subname)
     res=render(request,'Resources/show-resources.html',{'resources':quickmaps,'subname':subname,'name':'quickmap'})
     return res
 
-@deco_auth
 def QuickMap(request):
     subjects=getSubjects(Subject.objects.all())
     return render(request,'Quiz/show_subjects.html',{'subjects':subjects,'goto':'quickmap/subject-quickmap'})

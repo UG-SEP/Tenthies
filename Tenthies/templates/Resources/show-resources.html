@@ -1,5 +1,13 @@
 {% extends 'Home/nav.html' %}
 {% load static %}
+{% block title %}
+{% if name == 'resources' %}
+10thies | Resources
+{% else %}
+10thies | Quickmap
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style-resources.css' %}">
       <div class=heading>
@@ -18,29 +26,43 @@
              align="right"
              ></iframe>
              {% else %}
-             <img src="{{res.quickmap.url}}" alt="W3Schools" width="20%" height="100%" align="right" margin-right="20px">
+             <img src="{{res.quickmap.url}}" alt="quickmaps" width="20%" height="100%" align="right" margin-right="20px">
              {% endif %}
-         <div class="Subcode">{{sub.subcode}}</div>
-         <div class="Chname">{{sub.subname}}</div>
-         <div class="Level">{{sub.chname}}</div> <br>
+         <div class="Subcode">{{res.subcode}}</div>
+         <div class="Chname">{{res.subname}}</div>
+         <div class="Level">{{res.chname}}</div> <br>
          {% if name == 'resources' %}
          <div class="buttoncenter"><a href="{{res.pdf.url}}"><button class="favorite styled"type="button">
           PREVIEW
          </button></a>
       </div>
+      {% if user.is_authenticated %}
        <div class="buttoncenter"><a href="{{res.pdf.url}}" download=""><button class="favorite styled"type="button">
           DOWNLOAD
          </button></a>
       </div>
       {% else %}
+      <div class="buttoncenter"><a href="http://localhost:8000/User/signin"><button class="favorite styled"type="button">
+         DOWNLOAD
+        </button></a>
+     </div>
+      {% endif %}
+      {% else %}
       <div class="buttoncenter"><a href="{{res.quickmap.url}}"><button class="favorite styled"type="button">
          PREVIEW
         </button></a>
      </div>
+     {% if user.is_authenticated %}
       <div class="buttoncenter"><a href="{{res.quickmap.url}}" download=""><button class="favorite styled"type="button">
          DOWNLOAD
         </button></a>
      </div>
+     {% else %}
+     <div class="buttoncenter"><a href="http://localhost:8000/User/signin"><button class="favorite styled"type="button">
+      DOWNLOAD
+     </button></a>
+  </div>
+     {% endif %}
      {% endif %}
       </div>
    </section>

@@ -32,12 +32,25 @@ body{
 	height: 100vh;
 	font-family: "Open Sans";
   }
+.maths-color {
+	--bg-color: #7fff35;
+	--bg-color-light: #ffeeba;
+	--text-color-hover: #4C5656;
+	--box-shadow-color: rgba(255, 215, 97, 0.48);
+  }
+  
+  .geo-color {
+	--bg-color: #B8F9D3;
+	--bg-color-light: #e2fced;
+	--text-color-hover: #4C5656;
+	--box-shadow-color: rgba(184, 249, 211, 0.48);
+  }
   
   .history-color {
 	--bg-color: #ff5c5c;
 	--bg-color-light: #F0E7FF;
 	--text-color-hover: #fff;
-	--box-shadow-color: #ceb2fc7a;
+	--box-shadow-color: rgba(206, 178, 252, 0.48);
   }  
   .blog-cards {
 	width: 220px;
@@ -117,6 +130,16 @@ body{
 	left: 5.5px;
 	transition: opacity 0.3s ease-out;
   }
+ .geography .circle:after{
+    background-image: url("../images/geography.jpg");
+  }
+ .maths .circle:after{
+    background-image: url("../images/math-icon.jpg");
+  }
+ .history .circle:after{
+    background-image: url("../images/history\ \(2\).jpg");
+  }
+  
   
   .overlay {
 	width: 118px;
@@ -131,7 +154,7 @@ body{
   }
   /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX SUBJECT CARDS SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
-@media (max-width: 980px){
+  @media (max-width: 980px){
     .home2{
       min-height: 132vh;
     }
@@ -168,3 +191,5 @@ body{
       min-height: 250vh;
     }
   }
+
+

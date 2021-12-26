@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+     <link rel="stylesheet" href="stylequizquestions.css">
+   </head>
+   <body>
+
+    <!-- XXXXXXXXXXXX NAVIGATION XXXXXXXXXXXX -->
+       <nav>
+         <div class="menu-icon">
+            <span class="fas fa-bars"></span>
+         </div>
+         <div class="logo">
+          <a href="index.html"><span style="color: var(--main-color) ;">10</span>thies</a>
+         </div>
+         <div class="nav-items">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Quiz</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">QuickMap</a></li>
+            <li><a href="#">Guide</a></li>
+         </div>
+         <div class="user">
+          <a  href=""><span  class="fas fa-user"></span></a>
+         </div>
+         <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+         </div>
+       <div  class="nav-items log">
+         <li>
+            <a class="fas fa-user"> Sign-Up</a>
+         </li>
+       </div>  
+      </nav>
+
+      <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+      <div><b>Username:</b> {{res.user.username}}</div>
+      <div><b>Email:</b> {{res.user.email}}</div>
+      <div><b>Subject Code:</b> {{res.subcode}}</div>
+      <div><b>Subject:</b> {{res.subname}}</div>
+      <div><b>Chapter:</b> {{res.chname}}</div>
+      <div><b>Level:</b> {{res.level}}</div>
+      <div><b>Total Marks:</b> {{res.totalmarks}}</div>
+      <div><b>Marks Obtained:</b> {{res.marksobtained}}</div>
+      <div><b>Percentage:</b> {{res.percentage}}</div>
+      </div>
+   </div>
+  </body>
+  </html>

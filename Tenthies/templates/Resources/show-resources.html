@@ -11,7 +11,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style-resources.css' %}">
       <div class=heading>
-         <h1><i class="fas fa-calculator"><span>{{subname}}</span></i></h1>
+         <h1><i class="{{logo}}"><span>{{subname}}</span></i></h1>
       </div>
       {% for res in resources %}
       <section class="Containers">
@@ -26,41 +26,51 @@
              align="right"
              ></iframe>
              {% else %}
-             <img src="{{res.quickmap.url}}" alt="quickmaps" width="20%" height="100%" align="right" margin-right="20px">
+             <img src="{{res.quickmap.url}}" alt="quickmaps" width="150px" align="right" margin-right="20px">
              {% endif %}
          <div class="Subcode">{{res.subcode}}</div>
          <div class="Chname">{{res.subname}}</div>
          <div class="Level">{{res.chname}}</div> <br>
          {% if name == 'resources' %}
+         {% if user.is_authenticated %}
+
          <div class="buttoncenter"><a href="{{res.pdf.url}}"><button class="favorite styled"type="button">
           PREVIEW
          </button></a>
       </div>
-      {% if user.is_authenticated %}
        <div class="buttoncenter"><a href="{{res.pdf.url}}" download=""><button class="favorite styled"type="button">
           DOWNLOAD
          </button></a>
       </div>
       {% else %}
-      <div class="buttoncenter"><a href="http://localhost:8000/User/signin"><button class="favorite styled"type="button">
+      <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
+         PREVIEW
+        </button></a>
+     </div>
+      <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
          DOWNLOAD
         </button></a>
      </div>
       {% endif %}
       {% else %}
+      {% if user.is_authenticated %}
       <div class="buttoncenter"><a href="{{res.quickmap.url}}"><button class="favorite styled"type="button">
          PREVIEW
         </button></a>
      </div>
-     {% if user.is_authenticated %}
       <div class="buttoncenter"><a href="{{res.quickmap.url}}" download=""><button class="favorite styled"type="button">
          DOWNLOAD
         </button></a>
      </div>
      {% else %}
-     <div class="buttoncenter"><a href="http://localhost:8000/User/signin"><button class="favorite styled"type="button">
+     <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
+      PREVIEW
+     </button></a>
+  </div>
+   <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
       DOWNLOAD
      </button></a>
+  </div>
   </div>
      {% endif %}
      {% endif %}

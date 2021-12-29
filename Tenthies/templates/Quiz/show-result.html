@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>Username: {{res.user.username}}</div>
-    <div>Email: {{res.user.email}}</div>
-    <div>Subject Code: {{res.subcode}}</div>
-    <div>Subject: {{res.subname}}</div>
-    <div>Chapter: {{res.chname}}</div>
-    <div>Level {{res.level}}</div>
-    <div>Total Marks {{res.totalmarks}}</div>
-    <div>Marks Obtained: {{res.marksobtained}}</div>
-    <div>percentage: {{res.percentage}}</div>
-</body>
-</html>
+{% load static %}
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+     <link rel="stylesheet" href="{% static 'css/style-quiz-result.css' %}">
+     <link rel="stylesheet" href="{% static 'css/style-quiz-subjects.css' %}">
+   </head>
+   <body>
+
+      <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <h2><span style="color: var(--main-color) ;">Re</span>sult</h2>
+        <div><b>Username:</b> {{res.user.username}}</div>
+      <div><b>Email:</b> {{res.user.email}}</div>
+      <div><b>Subject Code:</b> {{res.subcode}}</div>
+      <div><b>Subject:</b> {{res.subname}}</div>
+      <div><b>Chapter:</b> {{res.chname}}</div>
+      <div><b>Level:</b> {{res.level}}</div>
+      <div><b>Total Marks:</b> {{res.totalmarks}}</div>
+      <div><b>Marks Obtained:</b> {{res.marksobtained}}</div>
+      <div><b>Percentage:</b> {{res.percentage}}%</div>
+      <div class="buttoncenter"><a href="{% url 'quiz' %}"><button class="favorite styled"type="button">
+         BACK
+        </button></a>
+      </div>
+   </div>
+  </body>
+  </html>

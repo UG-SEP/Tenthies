@@ -167,3 +167,11 @@ div {
   display: block;
   font-weight: 400;
 }
+h2{
+  text-align: center;
+  font-weight: 500;
+  font-size: 36px;
+  margin-top: -4rem;
+  border-bottom: solid 3px orangered;
+  margin-bottom: 1rem;
+}

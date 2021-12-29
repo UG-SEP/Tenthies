@@ -12,10 +12,17 @@
          <div class="Subcode">{{sub.subcode}}</div>
         <div class="Chname">{{sub.chname}}</div>
         <div class="Level">{{sub.level}}</div> <br>
-            <div class="buttoncenter"><a href="http://localhost:8000/Quiz/take-test?level={{sub.level}}&chname={{sub.chname}}&subname={{sub.subname}}&subcode={{sub.subcode}}"><button class="favorite styled"type="button">
+        {% if user.is_authenticated %}
+            <div class="buttoncenter"><a href="http://localhost:8000/Quiz/take-test?level={{sub.level}}&chname={{sub.chname}}&subname={{sub.subname}}&subcode={{sub.subcode}}&tques={{sub.totalquestions}}"><button class="favorite styled"type="button">
           GIVE QUIZ
          </button></a>
       </div>
+      {% else %}
+      <div class="buttoncenter"><a href="http://localhost:8000/User/signin"><button class="favorite styled"type="button">
+         GIVE QUIZ
+        </button></a>
+     </div>
+      {% endif %}
       </div>
    </section>
    {% endfor %}

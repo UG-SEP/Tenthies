@@ -1,0 +1,12 @@
+{% for message in messages %}
+
+<div style="display: flex; flex-direction: row;" id="{{message.tags}}" class="message">
+<div style="width: 95%;">{{message}}</div>
+      <div align="right" onclick="remove()" style="cursor: pointer;">X</div>   
+  </div>
+  <script>
+    function remove(){
+      document.getElementsByClassName('message')[0].style.display='none'
+    }
+  </script>
+{% endfor %}

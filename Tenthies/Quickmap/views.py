@@ -7,7 +7,7 @@ from Quiz.models import Subject
 def SubjectQuickMap(request):
     subname= request.GET.get('subname')
     quickmaps=get_subjectQuickMap(subname)
-    res=render(request,'Resources/show-resources.html',{'resources':quickmaps,'subname':subname,'name':'quickmap'})
+    res=render(request,'Resources/show-resources.html',{'resources':quickmaps,'subname':subname,'name':'quickmap','logo':quickmaps[0].subject.logo if len(quickmaps)!=0 else ''})
     return res
 
 def QuickMap(request):

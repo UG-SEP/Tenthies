@@ -1,89 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Student Profile Page Design Example</title>
+{% extends 'Home/nav.html' %}
+{% load static %}
+{% block title %}10thies | Profile{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile.css'  %}">
 
-    <meta name="author" content="Codeconvey" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
-<link rel="stylesheet" href="profile.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 <body>	
-  <h1>Profile</h1>          
-<!-- Student Profile -->
-<div class="student-profile py-4">
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card shadow-sm">
-          <div class="card-header bg-transparent text-center">
-            <img class="profile_img" src="ujjwal.jpg" alt="student dp">
-            <h3>UJJWAL Gupta</h3>
-            <h5>Student</h5>
-            <h6>UjjwalGupta@20in40.com</h6>
-            <h5 class="signout"><a  href="#"><i class="fa fa-sign-out" aria-hidden="true">Sign Out</i></a></h5>
-          </div>
-          
-        </div>
+  <h1>My Profile</h1>          
+  <div class="wrapper">
+    <div class="profile-card js-profile-card">
+      <div class="profile-card__img">
+        <img src="{% static 'images/user.gif' %}" alt="profile card">
       </div>
+  
+      <div class="profile-card__cnt js-profile-cnt">
+        <div class="profile-card__name">{{user.username}}</div>
+        <div class="profile-card__txt"> <strong>Student</strong> </div>
+        <div class="profile-card__txt">{{user.email}}</div>
       
-      <div class="col-lg-8">
-        <div class="card shadow-sm">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Quiz History</h3>
+  
+        <div class="profile-card-inf">
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{total_test}}</div>
+            <div class="profile-card-inf__txt">Tests</div>
           </div>
-          <div class="card-body pt-0">
-            <table class="table table-bordered">
-             
-              
-              <tr>
-                <th width="30%">Total Tests</th>
-                <td width="2%">:</td>
-                <td>11</td>
-              </tr>
-              <tr>
-                <th width="30%">Total Marks</th>
-                <td width="2%">:</td>
-                <td>500</td>
-              </tr>
-              <tr>
-                <th width="30%">Marks obtained</th>
-                <td width="2%">:</td>
-                <td>200</td>
-              </tr>
-              <tr>
-                <th width="30%">Percentage</th>
-                <td width="2%">:</td>
-                <td>70%</td>
-              </tr>
-            </table>
+
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{tresult.marksobtained}}</div>
+            <div class="profile-card-inf__txt">Your Total</div>
           </div>
+
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{tresult.totalmarks}}</div>
+            <div class="profile-card-inf__txt">Total Marks</div>
+          </div>
+  
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{tresult.percentage}}</div>
+            <div class="profile-card-inf__txt">Percentage</div>
+          </div>
+        </div>
+  
+        
+        <div class="profile-card-ctr">
+          <a href="{% url 'home' %}"><button class="profile-card__button button--orange">Back</button></a>
+          <a href="{% url 'signout' %}"><button class="profile-card__button button--blue js-message-btn">Sign-Out</button></a>
+         
         </div>
       </div>
     </div>
   </div>
+
+  {% if tresult.percentage %}
+<div class="wrapper">
+  <div class="profile-card quiz">
+    <table>
+      <caption><strong>Quiz History</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">Subject</th>
+          <th scope="col">Chapter</th>
+          <th scope="col">Marks Obtained</th>
+          <th scope="col">Total Marks</th>
+          <th scope="col">Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for res in result %}
+          <td data-label="Subject">{{res.subname}}</td>
+          <td data-label="Chapter">{{res.chname}}</td>
+          <td data-label="Marks Obtained">{{res.marksobtained}}</td>
+          <td data-label="Total Marks">{{res.totalmarks}}</td>
+          <td data-label="Percentage">{{res.percentage}}</td>
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
-<!-- {% extends 'Home/nav.html' %}
-{% block title %} 10thies | Profile {% endblock %}
-{% block content %}
-    {% if user.is_authenticated %}
-    <div>Username: {{user.username}}</div>
-    <div>Password: {{user.email}}</div>
-    {% endif %}
-    <br>
-    {% for res in result %}
-    <div class="quizinfo">Total marks {{res.totalmarks}}</div>
-    <div class="quizinfo">Marks Obtained {{res.marksobtained}}</div>
-    <div class="quizinfo">Percentage{{res.percentage}}</div>
-    {% endfor %}
-
-{% endblock %} -->
-
-	</body>
-</html>
+{% endif %}
+{% endblock %}

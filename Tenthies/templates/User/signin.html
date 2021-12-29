@@ -1,18 +1,8 @@
 {% extends 'Home/nav.html' %}
 {% load static %}
 {% block content %}
-<script>
-   function change(){    
-   var password=document.getElementById('email')
-   var showbtn=document.getElementById('show')
-   if(email.type == "password"){
-   email.type='text'
-   }else{
-   email.type='password'
-  } console.log(email.type)
-   }
-</script>
 <link rel="stylesheet" href="{% static 'css/forgot-password-style.css' %}">
+<script src="{% static 'js/validation.js' %}"></script>
 <section class="signin-page">
     <div class="sign-content">
         <header>Login | <span style="color: var(--main-color) ;">10</span>thies</header>

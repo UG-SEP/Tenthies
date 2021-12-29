@@ -22,14 +22,15 @@ Max 30 characters.
 
 
 */
+var state=false
 
 function validate(){
 var username=document.getElementById("username").value
 var email=document.getElementById("email").value
 var password=document.getElementById("password").value
-var username_re= /^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/
+var username_re= /^[a-zA-Z_0-9]{4,}$/
 var email_re= /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,4}$/
-var password_re= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/
+var password_re= /^(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,30}$/
 
 if(username.match(username_re)){
     if(email.match(email_re)){
@@ -52,9 +53,13 @@ else{
 }
 
 function change(){
-   var password=document.getElementById('email')
-   if(email.type == "password")
-   email.type='text'
-   else
-   email.type='password'
+   if(state){
+       document.getElementById("password").setAttribute("type","password")
+       document.getElementById("show").innerHTML="SHOW"
+   }
+   else{
+    document.getElementById("password").setAttribute("type","text")
+    document.getElementById("show").innerHTML="HIDE"
+   }
+   state=!state
 }

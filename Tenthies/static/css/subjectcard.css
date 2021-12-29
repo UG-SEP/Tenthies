@@ -53,6 +53,7 @@ body{
 	box-shadow: 0 14px 26px rgba(0,0,0,0.04);
 	transition: all 0.3s ease-out;
 	text-decoration: none;
+	margin-bottom: 5px;
   }
   
   .blog-cards:hover {
@@ -129,3 +130,41 @@ body{
 	transition: transform 0.3s ease-out;
   }
   /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX SUBJECT CARDS SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+@media (max-width: 980px){
+    .home2{
+      min-height: 132vh;
+    }
+  }
+
+  @media (max-width: 640px){
+    .home2{
+      min-height: 135vh;
+    }
+    .blog-cards{
+      width: 170px;
+      height: 270px;
+    }
+    .overlay {
+      top: 55px;
+      left: 30px;
+      } 
+  }
+  @media (max-width: 350px){
+    .blog-cards{
+      width: 170px;
+      height: 270px;
+    }
+    .overlay {
+      top: 55px;
+      left: 30px;
+      }
+    .home2{
+      min-height: 140vh;    
+  }
+}
+  @media (max-width: 340px){
+    .home2{
+      min-height: 170vh;
+    }
+  }

@@ -5,14 +5,12 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 from Quiz.views import getSubjects
 from Quiz.models import Subject
 
-from User.views import deco_auth
 
 @xframe_options_exempt
 def SubjectResources(request):
     subname=request.GET.get('subname')
     resources=get_subjectResources(subname)
-    print(len(resources))
-    res=render(request,'Resources/show-resources.html',{'resources': resources,'subname':subname,'name':'resources'})
+    res=render(request,'Resources/show-resources.html',{'resources': resources,'subname':subname,'name':'resources','logo':resources[0].subject.logo if len(resources)!=0 else ''})
     return res
 
 def Resources(request):

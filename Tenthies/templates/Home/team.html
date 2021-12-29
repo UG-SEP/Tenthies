@@ -1,0 +1,81 @@
+{% extends 'Home/nav.html' %}
+{% load static %}
+{% block title %} Our Team {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/team.css' %}">
+   <section>
+    <div class="container">
+        <div class="section-title">
+            <h1>Founding Team</h1>
+        </div>
+
+        <div class="row">
+
+
+            <div class="column">
+                <div class="team">
+                    <div class="team-img">
+                        <img src="{% static 'images/ujjwal.jpg' %}" alt="Team Image">
+                    </div>
+                    <div class="team-content">
+                        <h2>Ujjwal Gupta</h2>
+                        <h3>Chief Backend Developer</h3>
+                        <p>School Student</p>
+                        <h4 style="font-size: 10px;">ujjwalcomputerpro1@gmail.com</h4>
+                    </div>
+                    <div class="team-social">
+                        <a href="https://twitter.com/UjjwalG76283416" class="social-tw"> <i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100052029756223" class="social-fb"> <i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/ujjwal-gupta-ug-233543202/" class="social-li"> <i class="fab fa-linkedin-in"></i></a>
+                        <a href="{% url 'construction' %}" class="social-in"> <i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/UG-SEP" class="social-yt"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="team">
+                    <div class="team-img">
+                        <img src="{% static 'images/aryandp.jpg' %}" alt="Team Image">
+                    </div>
+                    <div class="team-content">
+                        <h2>Aryan Singh</h2>
+                        <h3>Chief Frontend Developer</h3>
+                        <p>College Student</p>
+                        <h4 style="font-size: 10px;">aryansunny285@gmail.com</h4>
+                    </div>
+                    <div class="team-social">
+                        <a href="https://twitter.com/AryanSi285" class="social-tw"> <i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100010446317144" class="social-fb"> <i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/aryan-singh-a81a881a8/" class="social-li"> <i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.r.y.a.n285/" class="social-in"> <i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Aryan285git" class="social-yt"> <i class="fab fa-github"></i></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="team">
+                    <div class="team-img">
+                        <img src="{% static 'images/mrigankdp.jpg' %}" alt="Team Image">
+                    </div>
+                    <div class="team-content">
+                        <h2>Mrigank Singh</h2>
+                        <h3>Chief Frontend Developer</h3>
+                        <p>School Student</p>
+                        <h4 style="font-size: 10px;">mrigank.11.8@gmail.com</h4>
+                    </div>
+                    <div class="team-social">
+                        <a href="https://twitter.com/MeNoctice?t=FMJGbfSduV7mfHdI1zWOIg&s=08" class="social-tw"> <i class="fab fa-twitter"></i></a>
+                        <a href="{% url 'construction' %}" class="social-fb"> <i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/mrigank-singh-277519221/" class="social-li"> <i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/singhmrigankshekhar?utm_medium=copy_link" class="social-in"> <i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Mrigank118" class="social-yt"> <i class="fab fa-github"></i></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </section>
+    
+   {% endblock %}

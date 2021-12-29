@@ -5,7 +5,7 @@ import random
 from User.views import deco_auth
 
 # global variables which is needed during the Quiz
-questions,i,useranswer,subject=[],0,[],models.Subject()
+questions,i,useranswer,subject,result=[],0,[],models.Subject(),models.QuizResult
 
 def ShowSubjects(request):
     dupsubjects=models.Subject.objects.all()
@@ -22,26 +22,30 @@ def TakeTest(request):
     if(len(questions)==0):
         return HttpResponse("<h1 align='center'>Error No question found</h1>")
     random.shuffle(questions)
-    res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1})
+    res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions})
     return res
 
 @deco_auth
 def ShowQues(request):
     # using global variables
-    global questions,useranswer,subject,i
-    print(request.GET.getlist('choice'))
+    global questions,useranswer,subject,i,result
     useranswer.append(request.GET.getlist('choice'))
-    if(i==subject.totalquestions-1):
-        print(useranswer)
-        correct_answers=validate_answers(useranswer,questions)
-        per=calculate_per(subject.totalquestions,correct_answers)
-        result=generate_result(correct_answers,subject.totalquestions,per,request)
-        reset_quiz()
-        result.save()
-        res = render(request,'Quiz/show-result.html',{'res':result})
-        return res
+    try:
+        if(i==subject.totalquestions-1):
+            correct_answers=validate_answers(useranswer,questions)
+            per=calculate_per(subject.totalquestions,correct_answers)
+            result=generate_result(correct_answers,subject.totalquestions,per,request)
+            reset_quiz()
+            result.save()
+            res = render(request,'Quiz/show-result.html',{'res':result})
+            return res
+    except:
+        res=render(request,'Quiz/show-result.html',{'res':result})
     i+=1
-    res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1})
+    try:
+        res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions})
+    except IndexError:
+        res=render(request,'Quiz/show-result.html',{'res':result})
     return res
 
 def getSpecificQuestions(all_questions,request):
@@ -56,6 +60,8 @@ def getSpecificQuestions(all_questions,request):
             subject.subname=request.GET.get('subname')
             subject.chname=request.GET.get('chname')
             subject.level=request.GET.get('level')
+            subject.totalquestions=request.GET.get('tques')
+            subject.totalquestions=int(subject.totalquestions)
     return specific_questions
 
 def validate_answers(useranswer,questions):
@@ -68,7 +74,10 @@ def validate_answers(useranswer,questions):
     return correct_answers
 
 def calculate_per(totalquestions,correctanswer):
-    return (correctanswer*100)/totalquestions
+    try:
+        return (correctanswer*100)/totalquestions
+    except ZeroDivisionError:
+        pass
 
 def generate_result(correctanswers,totalquestions,percentage,request):
     res=models.QuizResult()
@@ -78,7 +87,7 @@ def generate_result(correctanswers,totalquestions,percentage,request):
     res.level=subject.level
     res.marksobtained=correctanswers
     res.totalmarks=totalquestions
-    res.percentage=percentage
+    res.percentage=format(percentage,".2f")
     res.user=request.user
     return res
 

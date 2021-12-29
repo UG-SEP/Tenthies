@@ -1,15 +1,84 @@
 {% extends 'Home/nav.html' %}
-{% block title %} 10thies | Profile {% endblock %}
+{% load static %}
+{% block title %}10thies | Profile{% endblock %}
 {% block content %}
-    {% if user.is_authenticated %}
-    <div>Username: {{user.username}}</div>
-    <div>Password: {{user.email}}</div>
-    {% endif %}
-    <br>
-    {% for res in result %}
-    <div class="quizinfo">Total marks {{res.totalmarks}}</div>
-    <div class="quizinfo">Marks Obtained {{res.marksobtained}}</div>
-    <div class="quizinfo">Percentage{{res.percentage}}</div>
-    {% endfor %}
+<link rel="stylesheet" href="{% static 'css/profile.css'  %}">
 
+    
+</head>
+<body>	
+  <h1>My Profile</h1>          
+  <div class="wrapper">
+    <div class="profile-card js-profile-card">
+      <div class="profile-card__img">
+        <img src="{% static 'images/user.gif' %}" alt="profile card">
+      </div>
+  
+      <div class="profile-card__cnt js-profile-cnt">
+        <div class="profile-card__name">{{user.username}}</div>
+        <div class="profile-card__txt"> <strong>Student</strong> </div>
+        <div class="profile-card__txt">{{user.email}}</div>
+      
+  
+        <div class="profile-card-inf">
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{total_test}}</div>
+            <div class="profile-card-inf__txt">Tests</div>
+          </div>
+
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{tresult.marksobtained}}</div>
+            <div class="profile-card-inf__txt">Your Total</div>
+          </div>
+
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{tresult.totalmarks}}</div>
+            <div class="profile-card-inf__txt">Total Marks</div>
+          </div>
+  
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{tresult.percentage}}</div>
+            <div class="profile-card-inf__txt">Percentage</div>
+          </div>
+        </div>
+  
+        
+        <div class="profile-card-ctr">
+          <a href="{% url 'home' %}"><button class="profile-card__button button--orange">Back</button></a>
+          <a href="{% url 'signout' %}"><button class="profile-card__button button--blue js-message-btn">Sign-Out</button></a>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if tresult.percentage %}
+<div class="wrapper">
+  <div class="profile-card quiz">
+    <table>
+      <caption><strong>Quiz History</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">Subject</th>
+          <th scope="col">Chapter</th>
+          <th scope="col">Marks Obtained</th>
+          <th scope="col">Total Marks</th>
+          <th scope="col">Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for res in result %}
+          <td data-label="Subject">{{res.subname}}</td>
+          <td data-label="Chapter">{{res.chname}}</td>
+          <td data-label="Marks Obtained">{{res.marksobtained}}</td>
+          <td data-label="Total Marks">{{res.totalmarks}}</td>
+          <td data-label="Percentage">{{res.percentage}}</td>
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
 {% endblock %}

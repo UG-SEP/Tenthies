@@ -1,0 +1,38 @@
+{% extends 'Home/nav.html' %}
+{% load static %}
+{% block title %} 10thies | Contact-Us {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/forgot-password-style.css' %}">
+
+<section class="signin-page">
+    <div class="sign-content">
+        <header>Contact | <span style="color: var(--main-color) ;">10</span>thies</header>
+        {% if user.is_authenticated %}
+        <form method="post">
+           {% else %}
+           <form action="{% url 'signin' %}" method="post"></form>
+           {% endif %}
+           {% csrf_token %}
+           <div class="field space">
+            <span class="fas fa-book"></span>
+            {{form.subject}}
+         </div>
+         <div class="field space">
+            <span class="fas fa-solid fa-laptop"></span>
+            {{form.device}}
+         </div>
+         <div class="field space" style="height: 80px; font-size: 15px;">
+            {{form.message}}
+         </div>
+           <div class="field">
+              <input type="submit" value="SEND-MAIL">
+           </div>
+        </form>
+     
+        <div class="signup">
+           <a href="{% url 'signup' %}">Signup</a> | <a href="{% url 'signin' %}">Login</a>
+        </div>
+     </div>
+  </section>
+
+{% endblock %}

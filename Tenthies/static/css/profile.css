@@ -96,6 +96,7 @@ h1{
   font-weight: 500;
   color: #324e63;
   margin-bottom: 15px;
+  word-wrap: break-word;
 }
 
 

@@ -1,6 +1,4 @@
-from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -11,7 +9,7 @@ def deco_auth(isauth):
         if 'username' in request.session.keys():
             return isauth(request)
         else:
-            return HttpResponseRedirect('signin')
+            return redirect('signin')
     return mod_isauth
 
 def signup(request):
@@ -19,17 +17,18 @@ def signup(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        try:
-            User.objects.get(email=email)
-            User.objects.get(username=username)
-        except User.DoesNotExist or IntegrityError :
+        
+        if User.objects.filter(email=email).exists():
             messages.error(request,"This email id or username is already in use")
             return redirect('signup')
-        newuser=User.objects.create_user(username,email,password)
-        newuser.save()
-        messages.success(request,"Your account has been create succesfully")
-        return redirect('home')
-    
+        try:
+            newuser=User.objects.create_user(username,email,password)
+            newuser.save()
+            messages.success(request,"Your account has been create succesfully")
+            return redirect('signin')
+        except IntegrityError :
+            messages.error(request,"This email id or username is already in use")
+            return redirect('signup')
     return render(request,'User/signup.html')
 
 def signin(request):
@@ -62,4 +61,4 @@ def signout(request):
         pass
     logout(request)
     messages.success(request,"Successfully Sign Out")
-    return HttpResponseRedirect('http://localhost:8000/')
+    return redirect('home')

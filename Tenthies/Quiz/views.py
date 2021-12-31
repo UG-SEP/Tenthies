@@ -69,6 +69,7 @@ def validate_answers(useranswer,questions):
     i=0
     while(i<len(useranswer)):
         if (str(useranswer[i])) == "['"+(questions[i].answer)+"']":
+            print(useranswer[i],questions[i].answer)
             correct_answers+=1
         i+=1
     return correct_answers
@@ -101,7 +102,8 @@ def reset_quiz():
 def ShowTest(request):
     subname=request.GET.get('subname')
     sub_test=get_subjectTest(subname)
-    return render(request,'Quiz/show-test.html',{'test_sheet':sub_test,'subname':subname})
+    return render(request,'Quiz/show-test.html',{'test_sheet':sub_test,'subname':subname,
+    'logo': sub_test[0].logo if len(sub_test)!=0 else ''})
 
 def get_subjectTest(subname):
     subjects=models.Subject.objects.all()

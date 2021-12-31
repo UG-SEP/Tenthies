@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from Tenthies.settings import STATIC_DIR
 
 
 class Subject(models.Model):
@@ -10,7 +9,7 @@ class Subject(models.Model):
     level=models.TextField()
     chname=models.CharField(max_length=200)
     totalquestions=models.IntegerField()
-    subimg=models.ImageField(upload_to=STATIC_DIR+'/images')
+    subimg=models.ImageField(upload_to="images")
     sub_bgcolor=models.CharField(max_length=7)
     sub_bgcolor_light=models.CharField(max_length=10)
     sub_textcolor_hover=models.CharField(max_length=10)
@@ -20,7 +19,7 @@ class Subject(models.Model):
         return self.subname+' | '+self.chname+' | '+self.level
 
 class Question(models.Model):
-    subject=models.ForeignKey(Subject,on_delete=models.CASCADE)
+    subject=models.ForeignKey(Subject,on_delete=models.CASCADE,default="")
     subname=models.TextField()
     level=models.TextField()
     chname=models.TextField()

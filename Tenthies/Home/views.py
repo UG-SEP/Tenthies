@@ -16,7 +16,7 @@ def ContactUs(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message,request.user.email,['tenthiesEducation@gmail.com'])
+                send_mail(subject,'Email: '+request.user.email+'\n'+message,request.user.email,['tenthiesEducation@gmail.com'])
             except BadHeaderError:
                 messages.error(request,"Invalid Subject")
                 return redirect('contact-us')
@@ -47,7 +47,7 @@ def Report(request):
             message = form.cleaned_data['message']
             device = form.cleaned_data['device']
             try:
-                send_mail(subject,device+'\n'+message,request.user.email,['tenthiesEducation@gmail.com'])
+                send_mail(subject,'Email: '+request.user.email+'\n'+device+'\n'+message,request.user.email,['tenthiesEducation@gmail.com'])
             except BadHeaderError:
                 messages.error(request,"Invalid Subject")
                 return redirect('report')

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.db import models
 from django.shortcuts import render
 from Resources import models
@@ -10,6 +11,8 @@ from Quiz.models import Subject
 def SubjectResources(request):
     subname=request.GET.get('subname')
     resources=get_subjectResources(subname)
+    if len(resources)==0:
+        messages.warning(request,'Resources will be soon added')
     res=render(request,'Resources/show-resources.html',{'resources': resources,'subname':subname,'name':'resources','logo':resources[0].subject.logo if len(resources)!=0 else ''})
     return res
 

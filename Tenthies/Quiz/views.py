@@ -3,6 +3,8 @@ from django.shortcuts import render
 from Quiz import models
 import random
 from User.views import deco_auth
+from django.contrib import messages
+
 
 # global variables which is needed during the Quiz
 questions,i,useranswer,subject,result=[],0,[],models.Subject(),models.QuizResult
@@ -20,7 +22,7 @@ def TakeTest(request):
     questions=getSpecificQuestions(all_questions,request)
 
     if(len(questions)==0):
-        return HttpResponse("<h1 align='center'>Error No question found</h1>")
+        return HttpResponse("<h1 align='center'>Error No question found</h1><h1 align='center'>Note: We will soon add question in this test</h1>")
     random.shuffle(questions)
     res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions})
     return res
@@ -102,6 +104,7 @@ def reset_quiz():
 def ShowTest(request):
     subname=request.GET.get('subname')
     sub_test=get_subjectTest(subname)
+    messages.warning(request,"More test will be added soon")
     return render(request,'Quiz/show-test.html',{'test_sheet':sub_test,'subname':subname,
     'logo': sub_test[0].logo if len(sub_test)!=0 else ''})
 

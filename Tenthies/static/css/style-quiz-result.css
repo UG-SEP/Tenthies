@@ -166,6 +166,7 @@ div {
   padding: 10px;
   display: block;
   font-weight: 400;
+  word-wrap: break-word;
 }
 h2{
   text-align: center;

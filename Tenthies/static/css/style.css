@@ -25,7 +25,7 @@ body{
   overflow-x: hidden;
 }
 /*                                     MESSAGE SYSTEM                                          */
-#success,#danger{
+#success,#danger,#alert{
   background-color: #39a839;
   font-family: Montserrat, sans-serif;
   text-align: center;
@@ -35,6 +35,10 @@ body{
 }
 #danger{
   background-color: #d12626;
+}
+#alert{
+  background-color: #ffcc00;
+  color: black;
 }
 /* -----------------------------------NAVBAR SECTION START------------------------------------ */
 nav{
@@ -700,7 +704,7 @@ nav .logo.space{
       font-size: 30px;
     }
     .home2{
-      min-height: 135vh;
+      min-height: 120vh;
     }
     .content h1{
       font-size: 40px;
@@ -774,7 +778,7 @@ nav .logo.space{
       font-size: 16px;
     }
   }
-  @media (max-width: 340px){
+  @media (max-width: 341px){
     .home2{
       min-height: 250vh;
     }

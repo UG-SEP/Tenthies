@@ -147,5 +147,6 @@ EMAIL_HOST_PASSWORD = 'vecpzjdvskqaijhw'
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-    messages.SUCCESS: 'success'
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'alert',
 }

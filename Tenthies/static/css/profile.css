@@ -284,3 +284,18 @@ table th {
   font-size: 14px
 }
 }
+
+
+/* for button in quiz history*/
+.recheck{
+  background: linear-gradient(45deg, #fc5305, #f05924);
+ 
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+}
+.recheck:hover {
+  transition: all .4s ease ;
+  transform: translateY(-2px);
+}

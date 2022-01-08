@@ -41,6 +41,17 @@
             <div class="profile-card-inf__txt">Percentage</div>
           </div>
         </div>
+          
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">000</div>
+            <div class="profile-card-inf__txt">XYZ</div>
+          </div>
+        </div>
+        <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">000</div>
+            <div class="profile-card-inf__txt">XYZ</div>
+          </div>
+        </div>
   
         
         <div class="profile-card-ctr">
@@ -64,6 +75,7 @@
           <th scope="col">Marks Obtained</th>
           <th scope="col">Total Marks</th>
           <th scope="col">Percentage</th>
+          <th scope="col">Revisit</th>
         </tr>
       </thead>
       <tbody>
@@ -74,6 +86,7 @@
           <td data-label="Marks Obtained">{{res.marksobtained}}</td>
           <td data-label="Total Marks">{{res.totalmarks}}</td>
           <td data-label="Percentage">{{res.percentage}}</td>
+          <td data-label="Revisit"><button class="recheck">Visit</button></td>
         </tr>
        {% endfor %}
       </tbody>

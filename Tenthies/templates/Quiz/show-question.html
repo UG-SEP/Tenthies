@@ -11,19 +11,42 @@
    <body>
       <div class="quiz-container" id="quiz">
       <div class="quiz-header">
-        <form action="{% url 'show_question' %}" class="form" method="get">
+        <form action="http://localhost:8000/Quiz/show-ques" class="form" method="get">
         {% csrf_token %}<br>
         <h2><div class="question">{{qno}}</div></h2>
         <h2><div class="question">{{question.ques}}</div></h2><br>
+        {% if question.image %}
+        <div align="center"><img src="{{question.image.url}}" height="200px" alt="question_related_image"></div>
+        {% endif %}
+        <!--Option 1-->
         <input type="radio" name="choice" id="a" class="answer" value="{{question.option1}}" checked><label for="a" id="a_text">{{question.option1}}</label><br>
-
+        {% if question.option2 == userans %}
+        <input type="radio" name="choice" id="b" class="answer" value="{{question.option2}}" checked><label for="b" id="b_text">{{question.option2}}</label><br>
+        {% else %}
         <input type="radio" name="choice" id="b" class="answer" value="{{question.option2}}"><label for="b" id="b_text">{{question.option2}}</label><br>
+        {% endif %}
 
+        {% if question.option3 == userans %}
+        <input type="radio" name="choice" id="c" class="answer" value="{{question.option3}}" checked><label for="c" id="c_text">{{question.option3}}</label><br>
+        {% else %}
         <input type="radio" name="choice" id="c" class="answer" value="{{question.option3}}"><label for="c" id="c_text">{{question.option3}}</label><br>
+        {% endif %}
 
+        {% if question.option4 == userans %}
+        <input type="radio" name="choice" id="d" class="answer" value="{{question.option4}}" checked><label for="d" id="d_text">{{question.option4}}</label><br><br>
+        {% else %}
         <input type="radio" name="choice" id="d" class="answer" value="{{question.option4}}"><label for="d" id="d_text">{{question.option4}}</label><br><br>
+        {% endif %}
+
+        <!--Next and Previous buttons -->
+        {% if qno == 1 %}
+        <input type="submit" class="button" value="Previous" name="button" disabled>
+        {% else %}
+        <input type="submit" class="button" value="Previous" name="button">
+        {% endif %}
+        
         {% if qno != totalques %}
-        <input type="submit" class="button" value="Next">
+        <input type="submit" class="button" value="Next" name="button">
         {% else %}
         <input type="submit" class="button" value="Submit">
         {% endif %}

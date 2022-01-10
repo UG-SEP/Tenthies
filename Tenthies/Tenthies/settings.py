@@ -144,9 +144,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'tenthiesEducation@gmail.com'
-EMAIL_HOST_PASSWORD = 'vecpzjdvskqaijhw'
+EMAIL_HOST_PASSWORD = 'jtqisqbkayujmmec'
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-    messages.SUCCESS: 'success'
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'alert'
 }

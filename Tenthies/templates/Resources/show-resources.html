@@ -28,9 +28,9 @@
              {% else %}
              <img src="{{res.quickmap.url}}" alt="quickmaps" width="150px" align="right" margin-right="20px">
              {% endif %}
-         <div class="Subcode">{{res.subcode}}</div>
-         <div class="Chname">{{res.subname}}</div>
-         <div class="Level">{{res.chname}}</div> <br>
+         <div class="Subcode">{{res.subject.subcode}}</div>
+         <div class="Chname">{{res.subject.subname}}</div>
+         <div class="Level">{{res.subject.chname}}</div> <br>
          {% if name == 'resources' %}
          {% if user.is_authenticated %}
 

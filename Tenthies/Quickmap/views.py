@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.shortcuts import render
 from Quickmap import models
 from Quiz.views import getSubjects
-from User.views import deco_auth
 from Quiz.models import Subject
 
 def SubjectQuickMap(request):
@@ -19,4 +18,4 @@ def QuickMap(request):
     
 def get_subjectQuickMap(subname):
     quickmap=models.QuickMap.objects.all()
-    return [map for map in quickmap if map.subname==subname]
+    return [map for map in quickmap if map.subject.subname==subname]

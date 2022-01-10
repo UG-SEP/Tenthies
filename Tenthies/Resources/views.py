@@ -22,6 +22,6 @@ def Resources(request):
    
 def get_subjectResources(subname):
     resources=models.Resource.objects.all()
-    return [res for res in resources if res.subname==subname]
+    return [res for res in resources if res.subject.subname==subname]
 
 

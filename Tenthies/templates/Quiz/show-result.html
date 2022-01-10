@@ -28,5 +28,11 @@
         </button></a>
       </div>
    </div>
+   <h1 align="center">Details</h1>
+   {% for question,useranswer,correctanswer in zip_data %}
+   <div>Question: {{question}}</div>
+   <div>Your answer: {{useranswer}}</div>
+   <div>Correct answer:{{correctanswer}}</div>
+   {% endfor %}
   </body>
   </html>

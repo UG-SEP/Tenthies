@@ -30,7 +30,7 @@ var email=document.getElementById("email").value
 var password=document.getElementById("password").value
 var username_re= /^[a-zA-Z_0-9]{4,}$/
 var email_re= /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,4}$/
-var password_re= /^(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,30}$/
+var password_re= /^[A-Za-z\d#$@!%&*?]{6,30}$/
 
 if(username.match(username_re)){
     if(email.match(email_re)){

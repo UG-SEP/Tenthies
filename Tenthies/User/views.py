@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db import IntegrityError
 
+from Profile.models import Profile
+
 def deco_auth(isauth):
     def mod_isauth(request):
         if 'username' in request.session.keys():
@@ -24,6 +26,9 @@ def signup(request):
         try:
             newuser=User.objects.create_user(username,email,password)
             newuser.save()
+            profile=Profile()
+            profile.user=newuser
+            profile.save()  
             messages.success(request,"Your account has been create succesfully")
             return redirect('signin')
         except IntegrityError :

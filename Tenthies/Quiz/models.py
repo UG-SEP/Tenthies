@@ -20,10 +20,8 @@ class Subject(models.Model):
 
 class Question(models.Model):
     subject=models.ForeignKey(Subject,on_delete=models.CASCADE,default="")
-    subname=models.TextField()
-    level=models.TextField()
-    chname=models.TextField()
     ques=models.CharField(max_length=1000)
+    image=models.ImageField(upload_to='images',blank=True)
     option1=models.CharField(max_length=400)
     option2=models.CharField(max_length=400)
     option3=models.CharField(max_length=400)
@@ -41,6 +39,9 @@ class QuizResult(models.Model):
     subname=models.CharField(max_length=200)
     level=models.TextField()
     chname=models.CharField(max_length=200)
+    questions=models.TextField(default="")
+    useranswers=models.TextField(default="")
+    correctanswer=models.TextField(default="")
 
     def __str__(self):
         return str(self.subcode)+' | '+self.subname+' | '+ self.user.username

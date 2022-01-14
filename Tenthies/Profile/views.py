@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from Quiz.logics import strToList
 from User.views import deco_auth
 from Quiz.models import QuizResult
-from Quiz.views import calculate_per
+from Quiz.logics import calculate_per
 from Profile import models
 @deco_auth
 def Profile(request):
@@ -10,7 +10,6 @@ def Profile(request):
     user=request.user
     result=QuizResult.objects.filter(user=request.user)
     profile=models.Profile.objects.get(user=request.user)
-    print(profile.best_subject)
     total=get_total(result)
     res = render(request,'Profile/profile.html',{'user':user,'result':result,'tresult':total,'total_test':len(result),'profile':profile})
     return res
@@ -64,4 +63,21 @@ def subject_details(result,profile):
             profile.weak_subject_marks=result[i+1].marksobtained
         i+=1
     return profile
+
 """
+def Show_details(request):
+    status = True
+    correctanswer=request.GET.get('correctanswer')
+    questions=request.GET.get('questions')
+    useranswer=request.GET.get('useranswers')
+    if len(questions)==0:
+        status=False
+    return render(request,'Profile/Quiz-history-details.html',{'zip_data':zip(strToList(questions),strToList(useranswer),strToList(correctanswer)),'status':status})
+
+def ChangePhoto(request):
+    if(len(request.FILES)!=0):
+        profile=models.Profile.objects.get(user=request.user)
+        profile.profile_img=request.FILES['image']
+        profile.save()
+    
+    return redirect('profile')

@@ -19,6 +19,8 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
+    path('Analytics/',include("Analytics.urls")),
+    path('Question/',include("Question.urls")),
     path('Profile/',include("Profile.urls")),
     path('',include("Home.urls")),
     path('quickmap/',include("Quickmap.urls")),

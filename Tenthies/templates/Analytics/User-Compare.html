@@ -1,0 +1,34 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+
+{% if status == 'False' %}
+<form action="{% url 'compare_with_user' %}" method="post">
+    {% csrf_token %}
+    Compare with name of the user: <input type="text" name="username">
+    <input type="submit" value="Compare">
+</form>
+{% else %}
+<div><img src="{{yourProfile.profile_img.url}}" height="100px"></div>
+<div>Name: {{yourProfile.user.username}}</div>
+<div>Email: {{yourProfile.user.email}}</div>
+<div>Best In: {{yourProfile.best_subject}}</div>
+<div>Weak In: {{yourProfile.weak_subject}}</div>
+<div>Quiz Played Total test: {{yourTest}}</div>
+<div>Total Marks Obtained: {{yourPerformance.marksobtained}}</div>
+<div>Total Marks: {{yourPerformance.totalmarks}}</div>
+<div>Percentage: {{yourPerformance.percentage}}</div>
+<div>Your points</div>
+
+<div><img src="{{otherUserProfile.profile_img.url}}" height="100px"></div>
+<div>Name: {{otherUserProfile.user.username}}</div>
+<div>Email: {{otherUserProfile.user.email}}</div>
+<div>Best In: {{otherUserProfile.best_subject}}</div>
+<div>Weak In: {{otherUserProfile.weak_subject}}</div>
+<div>Total test: {{otherTest}}</div>
+<div>Total Marks Obtained: {{otherUserPerformance.marksobtained}}</div>
+<div>Total Marks: {{otherUserPerformance.totalmarks}}</div>
+<div>Percentage: {{otherUserPerformance.percentage}}</div>
+<div>{{otherUserProfile.user.username}}'s Points</div>
+{% endif %}
+{% endblock %}

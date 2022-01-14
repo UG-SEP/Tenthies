@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render
 from Quickmap import models
-from Quiz.views import getSubjects
+from Quiz.logics import getSubjects
 from Quiz.models import Subject
 
 def SubjectQuickMap(request):

@@ -4,10 +4,12 @@
    <head>
       <meta charset="utf-8">
       <title></title>
+      <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">  
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
      <link rel="stylesheet" href="{% static 'css/style-quiz-result.css' %}">
      <link rel="stylesheet" href="{% static 'css/style-quiz-subjects.css' %}">
+
    </head>
    <body>
 
@@ -27,12 +29,11 @@
          BACK
         </button></a>
       </div>
+      <div class="buttoncenter"><a href="{% url 'quiz-details' %}"><button class="favorite styled"type="button">
+         Details
+        </button></a>
+      </div>
    </div>
-   <h1 align="center">Details</h1>
-   {% for question,useranswer,correctanswer in zip_data %}
-   <div>Question: {{question}}</div>
-   <div>Your answer: {{useranswer}}</div>
-   <div>Correct answer:{{correctanswer}}</div>
-   {% endfor %}
+   </div>
   </body>
   </html>

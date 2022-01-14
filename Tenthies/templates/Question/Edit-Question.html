@@ -1,0 +1,10 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | Add Questions {% endblock %}
+{% block content %}
+<form action="http://localhost:8000/Question/Edit-Question?id={{userQues.id}}" method="post">
+    {% csrf_token %}
+    <div>Question: <input type="text" name="question" value="{{userQues.question}}"></div>
+    <div>Description: <input type="text" name="description" value="{{userQues.description}}"></div>
+    <div><input type="submit" value="Save"></div>
+</form>
+{% endblock %}

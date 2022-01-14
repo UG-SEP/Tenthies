@@ -1,0 +1,14 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+{% if questions %}
+{% for ques in questions %}
+<div style="height: 100px; font-size: 2rem;"><a href="http://localhost:8000/Question/View-Question?id={{ques.id}}">
+    {{ques.question}}  | Time: {{ques.date_time}} UTC </a></div>
+{% endfor %} 
+{% else %}
+<div>No Questions Exist</div>
+{% endif %}
+
+<a href="{% url 'add_question' %}">Add question</a>
+{% endblock %}

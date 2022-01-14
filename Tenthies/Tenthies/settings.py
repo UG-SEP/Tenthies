@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Analytics',
+    'Question',
     'Home',
     'Profile',
     'Quickmap',

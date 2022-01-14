@@ -1,0 +1,18 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+
+{% for sub,value in subjects.items %}
+<div>{{sub}} {{value}}%
+</div>
+{% endfor %}
+    {% if tvalue < 30 %} We believe that you will soon upgrade yourself
+    {% elif tvalue < 50 %} Keep going one day you will be there
+    {% elif tvalue < 75 %} Great going keep it up
+    {% elif tvalue < 80 %} Your are a superior person and your are going to rock in your future 
+    {% elif tvalue < 90 %} Your are a extra odinary student only 15% students deserve this position 
+    {% elif tvalue < 100 %} Your are a legend and born to contribute to this would only 10% students deserves this position 
+    {% elif tvalue == 100 %} You have something special. We would like to contact with you <a href="{% url 'contact-us' %}">Contact Us</a>
+    {% endif %}
+
+{% endblock %}

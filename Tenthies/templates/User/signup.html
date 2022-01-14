@@ -1,12 +1,11 @@
 {% extends 'Home/nav.html' %}
 {% load static %}
 {% block content %}
-<script src="{% static 'js/validation.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/forgot-password-style.css' %}">
 <section class="signin-page">
     <div class="sign-content">
         <header>Sign-Up | <span style="color: var(--main-color) ;">10</span>thies</header>
-        <form action="{% url 'signup' %}" method="post" onsubmit="return validate()">
+        <form action="{% url 'signup' %}" method="post">
             {% csrf_token %}
             <div class="field">
                 <span class="fas fa-user-graduate"></span>

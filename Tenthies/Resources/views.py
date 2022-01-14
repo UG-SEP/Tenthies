@@ -3,7 +3,7 @@ from django.db import models
 from django.shortcuts import render
 from Resources import models
 from django.views.decorators.clickjacking import xframe_options_exempt
-from Quiz.views import getSubjects
+from Quiz.logics import getSubjects
 from Quiz.models import Subject
 
 

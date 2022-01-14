@@ -34,8 +34,11 @@ def ShowQues(request):
         try:
             return render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions,'userans':useranswer[i]})
         except IndexError:
-            return render(request,'Quiz/show-result.html',{'res':result,'zip_data':zip(strToList(result.questions),strToList(result.useranswers),strToList(result.correctanswer))})
-    useranswer[i]=request.GET.get('choice')
+            return render(request,'Quiz/show-result.html',{'res':result})
+    try:
+        useranswer[i]=request.GET.get('choice')
+    except IndexError:
+        return render(request,'Quiz/show-result.html',{'res':result})        
     try:
         if(i==subject.totalquestions-1):
             correct_answers=validate_answers(useranswer,questions)
@@ -44,15 +47,15 @@ def ShowQues(request):
             result=storeinfo(useranswer,get_questions(questions),result,get_correct_answers(questions))
             reset_quiz()
             result.save()
-            res = render(request,'Quiz/show-result.html',{'res':result,'zip_data':zip(strToList(result.questions),strToList(result.useranswers),strToList(result.correctanswer))})
+            res = render(request,'Quiz/show-result.html',{'res':result})
             return res
     except:
-        res=render(request,'Quiz/show-result.html',{'res':result,'zip_data':zip(strToList(result.questions),strToList(result.useranswers),strToList(result.correctanswer))})
+        res=render(request,'Quiz/show-result.html',{'res':result})
     i+=1
     try:
         res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions,'userans':useranswer[i]})
     except IndexError:
-        res=render(request,'Quiz/show-result.html',{'res':result,'zip_data':zip(strToList(result.questions),strToList(result.useranswers),strToList(result.correctanswer))})
+        res=render(request,'Quiz/show-result.html',{})
     return res
 
 
@@ -121,10 +124,16 @@ def generate_result(correctanswers,totalquestions,percentage,request):
     if res.marksobtained>profile.best_subject_marks:
         profile.best_subject_marks=res.marksobtained
         profile.best_subject=res.subname
-    elif res.marksobtained<profile.weak_subject_marks:
+    if res.marksobtained<profile.weak_subject_marks:
         profile.weak_subject_marks=res.marksobtained
         profile.weak_subject=res.subname
+
+    profile.chname=res.chname
+    profile.level=res.level
     
     profile.save()
     
     return res
+
+def Show_details(request):
+    return render(request,'Profile/Quiz-history-details.html',{'zip_data':zip(strToList(result.questions),strToList(result.useranswers),strToList(result.correctanswer)),'status':True})

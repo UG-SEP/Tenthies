@@ -9,6 +9,8 @@ class Profile(models.Model):
     best_subject=models.CharField(max_length=80)
     best_subject_marks=models.IntegerField(default=0)
     weak_subject_marks=models.IntegerField(default=0)
+    chname=models.CharField(max_length=200,default="None")
+    level=models.CharField(max_length=40,default="None")
 
     def __str__(self):
         return self.user.username

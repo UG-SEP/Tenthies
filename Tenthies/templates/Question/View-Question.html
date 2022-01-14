@@ -1,0 +1,33 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+<script>
+    function showbox(){
+var form=document.getElementById('form')
+form.style.display="block"
+}
+</script>
+<div>Username: {{userQues.profile.user.username}}</div>
+<div>Email: {{userQues.profile.user.email}}</div>
+<div>Question: {{userQues.question}}</div>
+<div>Description: {{userQues.description}}</div>
+<div>Last edited time: {{userQues.date_time}} UTC</div>
+<div><a href="http://localhost:8000/Question/Upvote-Question?id={{userQues.id}}">like</a>{{userQues.like}}</div>
+<div><a href="http://localhost:8000/Question/Devote-Question?id={{userQues.id}}">dislike</a>{{userQues.dislike}}</div>
+
+{% if user.username == userQues.profile.user.username %}
+<a href="http://localhost:8000/Question/Edit-Question?id={{userQues.id}}">Edit</a>
+{% endif %}
+
+<a onclick="showbox()" style="cursor: pointer;">Add Answer</a>
+<form action="http://localhost:8000/Question/Add-Answer?id={{userQues.id}}" method="post" style="display: none;" id="form">
+  {% csrf_token %}
+    <input type="text" name="comment" placeholder="Enter your answer from here" style="height: 100px; width: 200px;">
+    <input type="submit" value="Save">
+</form>
+{% for com in comments %}
+<div>Comment: {{com}} Time: {{com.date_time}} UTC username: {{com.profile.user.username}}</div>
+<div><a href="http://localhost:8000/Question/Upvote-Comment?id={{com.id}}">like</a>{{com.like}}</div>
+<div><a href="http://localhost:8000/Question/Devote-Comment?id={{com.id}}">dislike</a>{{com.dislike}}</div>
+{% endfor %}
+{% endblock %}

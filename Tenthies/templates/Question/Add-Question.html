@@ -1,0 +1,10 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | Add Questions {% endblock %}
+{% block content %}
+<form action="{% url 'add_question' %}" method="post">
+    {% csrf_token %}
+    <div>Question: <input type="text" name="question"></div>
+    <div>Description: <input type="text" name="description"></div>
+    <div><input type="submit" value="Ask Question"></div>
+</form>
+{% endblock %}

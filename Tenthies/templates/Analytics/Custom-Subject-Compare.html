@@ -1,0 +1,44 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+
+<form action="{% url 'custom_subject_compare' %}" method="post">
+    {% csrf_token %}
+    {% if status == 'False' %}
+    <select name="Fsubject" >
+        {% for sub in subjects %}
+        <option value="{{sub}}">{{sub}}</option>
+        {% endfor %}
+    </select>
+    <select name="Ssubject" >
+        {% for sub in subjects %}
+        <option value="{{sub}}">{{sub}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Compare">
+
+</form>
+{% else %}
+
+<div>Subject {{sub1}}</div>
+<div>Total Test of this particular subject {{subDetail1.total_test}}</div>
+<div>Total marks of test {{subDetail1.total_marks}}</div>
+<div>Marks obtained {{subDetail1.marksobtained}}</div>
+<div>Best chapter{{subDetail1.best_chapter}}</div>
+<div>Weak Chapter{{subDetail1.weak_chapter}}</div>
+<div>Best Chapter Marks {{subDetail1.best_chapter_marks}}</div>
+<div>Weak Chapter Marks {{subDetail1.weak_chapter_marks}}</div>
+<div>Percentage {{subDetail1.percentage}}</div>
+<br><br><br><br>
+<div>Subject {{sub2}}</div>
+<div>Total Test of this particular subject {{subDetail2.total_test}}</div>
+<div>Total marks of test {{subDetail2.total_marks}}</div>
+<div>Marks obtained {{subDetail2.marksobtained}}</div>
+<div>Best chapter{{subDetail2.best_chapter}}</div>
+<div>Weak Chapter{{subDetail2.weak_chapter}}</div>
+<div>Best Chapter Marks {{subDetail2.best_chapter_marks}}</div>
+<div>Weak Chapter Marks {{subDetail2.weak_chapter_marks}}</div>
+<div>Percentage {{subDetail2.percentage}}</div>
+
+{% endif %}
+{% endblock %}

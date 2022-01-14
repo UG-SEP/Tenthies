@@ -29,6 +29,27 @@ body{
   background-size: cover;
   width: 100%;
 }
+/* TO THE TOP BUTTON */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  padding: 14px 14px;
+  border-radius: 50%;
+  font-size: 15px;
+}
+#myBtn:hover {
+  background-color: rgb(3, 3, 3);
+}
+
 /*                                     MESSAGE SYSTEM                                          */
 #success,#danger,#alert{
   background-color: #39a839;

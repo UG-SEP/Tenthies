@@ -22,7 +22,6 @@
       </div>
   
       <div class="profile-card__cnt js-profile-cnt">
-           <div style="margin-bottom: 70px;" class="profile-card__name"><a style="color: black; " href=""><button style="font-size: 15px;" class="profile-card__button button--orange">Save Changes <i class="fas fa-save"></i></button></a></div>
         <div class="profile-card__name">{{user.username}}</div>
         <div class="profile-card__txt"> <strong>Student</strong> </div>
         <div class="profile-card__txt">{{user.email}}</div>
@@ -50,13 +49,13 @@
           </div>
             
             <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">000</div>
-            <div class="profile-card-inf__txt">XYZ</div>
+            <div class="profile-card-inf__title">{{profile.weak_subject}}</div>
+            <div class="profile-card-inf__txt">Weak Subject</div>
           </div>
             
              <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">000</div>
-            <div class="profile-card-inf__txt">XYZ</div>
+            <div class="profile-card-inf__title">{{profile.best_subject}}</div>
+            <div class="profile-card-inf__txt">Best Subject</div>
           </div>
             
         </div>
@@ -86,7 +85,7 @@
           <th scope="col">Marks Obtained</th>
           <th scope="col">Total Marks</th>
           <th scope="col">Percentage</th>
-          <th scope="col">Revisit</th>
+          <th scope="col">View</th>
         </tr>
       </thead>
       <tbody>
@@ -97,7 +96,7 @@
           <td data-label="Marks Obtained">{{res.marksobtained}}</td>
           <td data-label="Total Marks">{{res.totalmarks}}</td>
           <td data-label="Percentage">{{res.percentage}}</td>
-          <td data-label="Revisit"><button class="recheck">Visit</button></td>
+          <td data-label="Revisit"><a href="http://localhost:8000/Profile/show-details?questions={{res.questions}}&correctanswer={{res.correctanswer}}&useranswers={{res.useranswers}}"><button class="recheck" style="cursor: pointer;">Details</button></a></td>
         </tr>
        {% endfor %}
       </tbody>

@@ -45,3 +45,11 @@ class QuizResult(models.Model):
 
     def __str__(self):
         return str(self.subcode)+' | '+self.subname+' | '+ self.user.username
+
+class QuizDetails(models.Model):
+    questions=models.ManyToManyField(Question,null=True)
+    i=models.IntegerField(null=True)
+    subject=models.ForeignKey(Subject,on_delete=models.PROTECT,default="")
+    button=models.CharField(max_length=40,null=True)
+    user=models.ForeignKey(User,on_delete=models.PROTECT,null=True,default="")
+    useranswer=models.TextField(default="",null=True)

@@ -10,7 +10,6 @@
 
 body{
   background: #644bff;
-  padding: 0 20px;
   background-color: #F2F2F2;
 }
 .quiz-container {
@@ -118,6 +117,7 @@ h1 {
     margin-left: 0%;
     height: 100%;
     width: 100%;
+    border-radius: 0px;
     box-shadow: none;
   box-shadow: none;
   box-shadow: none;
@@ -168,6 +168,7 @@ h3 {
 .container {
   width: 100%; 
   background-color: #ddd; 
+  margin: 20px;
 }
 
 .skills {
@@ -176,12 +177,20 @@ h3 {
   padding-bottom: 10px; 
   color: white; 
 }
+.skills div{
+  text-align: left;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+}
 
 .html {width: 90%; background-color:#FF8C00;} 
 
 .dropdown-skills{
-  display:block;
-  width: 70%;
+  display:flex;
+  justify-content: space-evenly;
+  justify-content: space-between;
+  
 }
 @media (max-width: 1150px){
   .dropdown{
@@ -189,4 +198,5 @@ h3 {
     flex: 1;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
 }

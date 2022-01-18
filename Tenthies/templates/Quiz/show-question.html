@@ -13,7 +13,7 @@
       <div class="quiz-header">
         <form action="http://localhost:8000/Quiz/show-ques" class="form" method="get">
         {% csrf_token %}<br>
-        <h2><div class="question">{{qno}}</div></h2>
+        <h2><div class="question">{{qno}}{{userans}}</div></h2>
         <h2><div class="question">{{question.ques}}</div></h2><br>
         {% if question.image %}
         <div align="center"><img src="{{question.image.url}}" height="200px" alt="question_related_image"></div>
@@ -50,6 +50,7 @@
         {% else %}
         <input type="submit" class="button" value="Submit">
         {% endif %}
+        <input type="hidden" name="id" value="{{detail.id}}">
       </form>
     </div>
 </div>

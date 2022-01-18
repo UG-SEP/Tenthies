@@ -1,0 +1,132 @@
+{% extends 'Home/nav.html' %}
+{% load static %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/analysis.css' %}">
+<h1 class="heading">REPORT CARD</h1>
+<div class="initial-info">
+   <div class="studentimg"><img src="{{profile.profile_img.url}}" alt="Student Img"></div>
+   <div class="info">
+      <span class="span-text">NAME:</span> {{profile.user.username}}
+      <br>
+   
+      <span class="span-text">E-MAIL :</span> {{profile.user.email}}
+      <br>
+      
+      <span class="span-text">ROLE :</span> Student
+      <br>   
+      {% if tvalue <= 40 %}
+      <span class="span-text">Division :</span> III
+      {% elif tvalue <= 75 %}
+      <span class="span-text">Division :</span> II
+      {% else %}
+      <span class="span-text">Division :</span> I
+      {% endif %}
+      <br>   
+   </div>
+</div>
+
+<section class="overall-graph">
+
+   <h1 style=" font-size: 30px;"  class="heading">SUBJECT ANALYSIS</h1>
+      <!--chart start-->
+           
+      <div class="skills">        
+         <div class="charts">
+           <div class="chart chart--dev">
+            
+             <ul class="chart--horiz">
+              {% for sub,value in subjects.items %}
+              <li class="chart__bar" style="width: {{value}}%;">
+                 <span class="chart__label">
+                   {{sub}}
+                 </span>
+                 <span class="chart__label" style="float: right; padding-right: 10px;">
+                    {{value}}%
+                 </span>
+               </li>
+               {% endfor %}
+             </ul>
+           </div>
+           
+         </div>
+       </div>
+       
+       <!--chart end-->
+</section>
+
+ <section class="improve">
+   
+   {% if tvalue < 30 %} <h1 style=" font-size: 30px;" class="heading">We believe that you will soon upgrade yourself</h1>
+   {% elif tvalue < 50 %} <h1 style=" font-size: 30px;" class="heading">Keep going one day you will be there</h1>
+   {% elif tvalue < 75 %} <h1 style=" font-size: 30px;" class="heading">Great going keep it up</h1>
+   {% elif tvalue < 80 %} <h1 style=" font-size: 30px;" class="heading">Your are a superior person and your are going to rock in your future</h1> 
+   {% elif tvalue < 90 %} <h1 style=" font-size: 30px;" class="heading">Your are a extra odinary student only 15% students deserve this position</h1>
+   {% elif tvalue < 100 %} <h1 style=" font-size: 30px;" class="heading">Your are a legend and born to contribute to this would only 10% students deserves this position</h1>
+   {% elif tvalue == 100 %} <h1 style=" font-size: 30px;" class="heading">You have something special. We would like to contact with you <a href="{% url 'contact-us' %}">Contact Us</a></h1>
+   {% endif %}
+ </section>
+
+<section class="suggestion">
+   <h1 style=" font-size: 30px;"  class="heading">HIGHLIHGTS</h1>
+   <div class="skills">        
+    <div class="charts">
+      <div class="chart chart--dev">
+       
+        <ul class="chart--horiz">
+          <h3 style="margin-bottom: 1px;" >Strongest Subject</h3>
+          <li class="chart__bar" style="width: 98%;">
+            <span class="chart__label">
+              Maths
+            </span>
+            <span class="chart__label" style="float: right; padding-right: 10px;">
+               98%
+            </span>
+          </li>
+          <h3 style="margin-bottom: 1px;" >Weakest Chapters</h3>
+          <li class="chart__bar" style="width: 98%;">
+            <span class="chart__label">
+              Chemistry
+            </sptan>
+            <span class="chart__label" style="float: right; padding-right: 10px;">
+             98%
+          </span>
+          </li>
+          <li class="chart__bar" style="width: 78%;">
+            <span class="chart__label">
+              Chemistry
+            </sptan>
+            <span class="chart__label" style="float: right; padding-right: 10px;">
+             98%
+          </span>
+          </li>
+          <li class="chart__bar" style="width: 50%;">
+            <span class="chart__label">
+              Chemistry
+            </sptan>
+            <span class="chart__label" style="float: right; padding-right: 10px;">
+             98%
+          </span>
+          </li>
+         
+          <h3 style="margin-bottom: 1px;" >Weakest Subject</h3>
+          <li class="chart__bar" style="width: 60%;">
+            <span class="chart__label">
+             biology
+            </span>
+            <span class="chart__label" style="float: right; padding-right: 10px;">
+             98%
+          </span>
+          </li>
+          
+         
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+   
+
+{% endblock %}

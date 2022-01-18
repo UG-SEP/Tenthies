@@ -1,3 +1,4 @@
+from ast import Store
 from Quiz.models import Subject
 
 class SubjectDetails():
@@ -11,6 +12,7 @@ class SubjectDetails():
         self.weak_chapter_marks=1000
         self.percentage=0.0
 
+        
 def get_subjects():
     subjects=Subject.objects.all()
     return list(set([sub.subname for sub in subjects]))
@@ -57,3 +59,33 @@ def get_subject_details(result):
 
 def get_specific_subjects(subname,result):
     return [res for res in result if res.subname==subname]
+
+def get_weakSubjects(result):
+    Store=[]
+    subjects=[]
+    for res in result:
+        if res.chname in Store:
+            pass
+        else:
+            if res.totalmarks/2 >= res.marksobtained:
+                subjects.append(res)
+                Store.append(res.chname)
+    return subjects
+
+def get_bestSubjects(result):
+    Store=[]
+    subjects=[]
+    for res in result:
+        if res.chname in Store:
+            pass
+        else:
+            if res.totalmarks/2 < res.marksobtained:
+                subjects.append(res)
+                Store.append(res.chname)
+    return subjects
+
+def get_growthRate(result):
+    rate=[]
+    for res in result:
+        rate.append(res.marksobtained/(res.totalmarks/10))
+    return rate

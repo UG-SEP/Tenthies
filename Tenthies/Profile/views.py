@@ -4,9 +4,11 @@ from User.views import deco_auth
 from Quiz.models import QuizResult
 from Quiz.logics import calculate_per
 from Profile import models
+from django.contrib.auth.models import User
 @deco_auth
 def Profile(request):
     #transfer(request)
+    #add()
     user=request.user
     result=QuizResult.objects.filter(user=request.user)
     profile=models.Profile.objects.get(user=request.user)
@@ -63,8 +65,8 @@ def subject_details(result,profile):
             profile.weak_subject_marks=result[i+1].marksobtained
         i+=1
     return profile
-
 """
+
 def Show_details(request):
     status = True
     correctanswer=request.GET.get('correctanswer')
@@ -81,3 +83,26 @@ def ChangePhoto(request):
         profile.save()
     
     return redirect('profile')
+
+"""
+def add():
+    users=User.objects.all()
+    for user in users:
+        res=QuizResult.objects.filter(user=user)
+        profile=models.Profile.objects.get(user=user)
+        profile.points=get_points(res)
+        profile.save()
+
+def get_points(results):
+    points=0
+    for res in results:
+        if res.marksobtained/(res.totalmarks/10) <= 5 and res.marksobtained/(res.totalmarks/10) > 3:
+            points+=1
+        elif res.marksobtained/(res.totalmarks/10) <= 9 and res.marksobtained/(res.totalmarks/10) > 5:
+            points+=2
+        elif res.marksobtained/(res.totalmarks/10) == 10:
+            points+=3
+        else:
+            pass
+    return points
+"""

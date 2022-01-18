@@ -13,7 +13,7 @@
         <div class="Chname">{{sub.chname}}</div>
         <div class="Level">{{sub.level}}</div> <br>
         {% if user.is_authenticated %}
-            <div class="buttoncenter"><a href="http://localhost:8000/Quiz/take-test?level={{sub.level}}&chname={{sub.chname}}&subname={{sub.subname}}&subcode={{sub.subcode}}&tques={{sub.totalquestions}}"><button class="favorite styled"type="button">
+            <div class="buttoncenter"><a href="http://localhost:8000/Quiz/take-test?id={{sub.id}}"><button class="favorite styled"type="button">
           GIVE QUIZ
          </button></a>
       </div>

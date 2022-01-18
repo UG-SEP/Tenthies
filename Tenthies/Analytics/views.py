@@ -1,6 +1,6 @@
 from Profile.models import Profile
 from django.shortcuts import render
-from Analytics.logics import get_specific_subjects, get_subject_details, get_subjects, prepare_data
+from Analytics.logics import get_bestSubjects, get_growthRate, get_specific_subjects, get_subject_details, get_subjects, get_weakSubjects, prepare_data
 from django.contrib.auth.models import User
 from Profile.views import get_total
 from Quiz.models import QuizResult
@@ -8,17 +8,27 @@ from User.views import deco_auth
 
 @deco_auth
 def All_analysis(request):
-    return render(request,'Analytics/All-Analysis.html')
-
-@deco_auth
-def Each_Subject(request):
     data=[0,0]
     all_subjects=[]
+    tvalue=0
     all_subjects=get_subjects()
     results=QuizResult.objects.filter(user=request.user)
     each_subject=prepare_data(all_subjects,results,data)
-    return render(request,"Analytics/Show-Each-Subject.html",{'subjects':each_subject,
-    'tvalue':(data[0]*100)/data[1]})
+    try:
+        tvalue=(data[0]*100)/data[1]
+    except ZeroDivisionError:
+        pass
+
+    result=QuizResult.objects.filter(user=request.user)
+    weak_subjects=list(set(get_weakSubjects(result)))
+    best_subjects=list(set(get_bestSubjects(result)))
+    growth_rate=get_growthRate(result)
+    profile=Profile.objects.get(user=request.user)
+
+    return render(request,'Analytics/Analysis.html',{'weak_subjects':weak_subjects,'best_subjects':best_subjects,
+    'growth':growth_rate,'profile':profile,'subjects':each_subject,'tvalue':tvalue})
+
+
 
 @deco_auth
 def Compare_User(request):
@@ -51,3 +61,31 @@ def Custom_Subject_Compare(request):
         return render(request,'Analytics/Custom-Subject-Compare.html',{'status':'True','subDetail1':subDetail1,
         'subDetail2':subDetail2,'sub1':subject1,'sub2':subject2})
     return render(request,'Analytics/Custom-Subject-Compare.html',{'status':'False','subjects':get_subjects()})
+
+
+"""
+
+@deco_auth
+def Profile_Viewby(request):
+    profile=Profile.objects.get(user=request.user)
+    seenby=strToList(profile.seenby)
+    print(seenby)
+    return render(request,'Analytics/Profile-Viewby.html',{'seenby':seenby})
+
+@deco_auth
+def Profile_View(request):
+    if request.method == 'POST':
+        username=request.POST.get('username')
+        user=User.objects.get(username=username)
+        profile=Profile.objects.get(user=user)
+        seenby=strToList(profile.seenby)
+        seenby.append(str(request.user))
+        profile.seenby = ',@,'.join(seenby)
+        result=QuizResult.objects.filter(user=request.user)
+        total=get_total(result)
+        profile.save()
+        return render(request,'Analytics/View-Profile.html',{'user':user,'result':result,'tresult':total,'total_test':len(result),'profile':profile,'status':'True'})
+    
+    return render(request,'Analytics/View-Profile.html',{'status':'False'})
+
+"""

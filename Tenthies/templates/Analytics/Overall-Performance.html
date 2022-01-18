@@ -1,0 +1,22 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+
+Subject you should focus on 
+
+{% for subject in weak_subjects %}
+
+<div>{{subject.subname}} {{subject.chname}}</div>
+
+{% endfor %}
+
+Subject you can less focus on 
+
+{% for subject in best_subjects %}
+
+<div>{{subject.subname}} {{subject.chname}}</div>
+
+{% endfor %}
+
+
+{% endblock %}

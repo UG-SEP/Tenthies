@@ -11,6 +11,7 @@ class Profile(models.Model):
     weak_subject_marks=models.IntegerField(default=0)
     chname=models.CharField(max_length=200,default="None")
     level=models.CharField(max_length=40,default="None")
+    points=models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username

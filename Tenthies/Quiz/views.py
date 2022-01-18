@@ -1,77 +1,75 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
-from Profile.models import Profile
+from django.shortcuts import render 
 from Quiz import models
-import random
 from User.views import deco_auth
 from django.contrib import messages
-from Quiz.logics import strToList,get_questions,get_correct_answers, getSubjects,get_subjectTest,calculate_per,validate_answers,storeinfo
-
-# global variables which is needed during the Quiz
-questions,i,useranswer,subject,result,button=[],0,[],models.Subject(),models.QuizResult,'Next'
+from Quiz.logics import generate_result, getSpecificQuestions, listToStr, reset_quiz, strToList,get_questions,get_correct_answers, getSubjects,get_subjectTest,calculate_per,validate_answers,storeinfo
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import redirect
 
 @deco_auth
 def TakeTest(request):
-    # taking questions and i no of question as global one
-    global questions,i
+    detail=models.QuizDetails()
+    detail.i=0
+    detail.user=request.user
+    detail.button="Next"
+    detail.subject=models.Subject.objects.get(id=request.GET.get('id'))
+    detail.useranswer=''
+    detail.save()
     all_questions=models.Question.objects.all()
-    questions=getSpecificQuestions(all_questions,request)
+    detail=getSpecificQuestions(all_questions,request,detail)
 
-    if(len(questions)==0):
-        return HttpResponse("<h1 align='center'>Error: No question found</h1><h1 align='center'>Note: We will soon add question in this test</h1>")
-    elif(len(questions)!=questions[0].subject.totalquestions and len(questions)<questions[0].subject.totalquestions):
-        return HttpResponse("<h1 align='center'>Error: No. of question differs as provided in the subject list")
-    random.shuffle(questions)
-    res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions})
-    return res
+    if detail.subject.totalquestions>len(detail.questions.all()):
+        return HttpResponse('<h1>Error No question found</h1>')
+
+    return render(request,'Quiz/show-question.html',{'qno':detail.i+1,'question':detail.questions.all()[detail.i],
+    'totalques':detail.subject.totalquestions,'detail':detail})
 
 @deco_auth
 def ShowQues(request):
-    # using global variables
-    global questions,useranswer,subject,i,result
+    id=int(request.GET.get('id'))
+    try:
+        detail=models.QuizDetails.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return redirect('quiz')
+
+    if request.GET.get('choice')!=detail.questions.all()[detail.i].option1 and request.GET.get('choice')!=detail.questions.all()[detail.i].option2 and request.GET.get('choice')!=detail.questions.all()[detail.i].option3 and request.GET.get('choice')!=detail.questions.all()[detail.i].option4:
+        return render(request,'Quiz/show-question.html',{'qno':detail.i+1,'question':detail.questions.all()[detail.i],
+        'totalques':detail.subject.totalquestions,'detail':detail})  
+
+    useranswer=strToList(detail.useranswer)
+
     if request.GET.get('button') == 'Previous':
-        i-=1
-        try:
-            return render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions,'userans':useranswer[i]})
-        except IndexError:
-            return render(request,'Quiz/show-result.html',{'res':result})
-    try:
-        useranswer[i]=request.GET.get('choice')
-    except IndexError:
-        return render(request,'Quiz/show-result.html',{'res':result})        
-    try:
-        if(i==subject.totalquestions-1):
-            correct_answers=validate_answers(useranswer,questions)
-            per=calculate_per(subject.totalquestions,correct_answers)
-            result=generate_result(correct_answers,subject.totalquestions,per,request)
-            result=storeinfo(useranswer,get_questions(questions),result,get_correct_answers(questions))
-            reset_quiz()
+        detail.i-=1
+        detail.save()
+        return render(request,'Quiz/show-question.html',{'question':detail.questions.all()[detail.i],
+        'qno':detail.i+1,'totalques':detail.subject.totalquestions,'userans':useranswer[detail.i],
+        'detail':detail})
+    
+    
+    if len(useranswer)<=detail.i:
+        useranswer.append(request.GET.get('choice'))
+    else:
+        useranswer[detail.i]=request.GET.get('choice')
+
+    detail.useranswer=listToStr(useranswer)
+    detail.i+=1
+    detail.save()
+
+    if(detail.i==detail.subject.totalquestions):
+            correct_answers=validate_answers(useranswer,detail.questions.all())
+            per=calculate_per(detail.subject.totalquestions,correct_answers)
+            result=generate_result(correct_answers,per,request,detail)
+            detail.result=models.QuizResult()
+            result=storeinfo(useranswer,get_questions(detail.questions.all()),result,get_correct_answers(detail.questions.all()))
+            reset_quiz(detail)
             result.save()
+            detail.result=result
             res = render(request,'Quiz/show-result.html',{'res':result})
             return res
-    except:
-        res=render(request,'Quiz/show-result.html',{'res':result})
-    i+=1
-    try:
-        res=render(request,'Quiz/show-question.html',{'question':questions[i],'qno':i+1,'totalques':subject.totalquestions,'userans':useranswer[i]})
-    except IndexError:
-        res=render(request,'Quiz/show-result.html',{})
-    return res
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Do not touch
+    else:
+        return render(request,'Quiz/show-question.html',{'qno':detail.i+1,'question':detail.questions.all()[detail.i],
+        'totalques':detail.subject.totalquestions,'detail':detail})
 
 
 def ShowSubjects(request):
@@ -80,22 +78,6 @@ def ShowSubjects(request):
     return render(request,'Quiz/show_subjects.html',{'subjects':subjects,'goto':'Quiz/show-test'})
 
 
-def getSpecificQuestions(all_questions,request):
-    specific_questions=[]
-    for ques in all_questions:
-        if(ques.subject.chname.upper()==request.GET.get('chname').upper() and
-        ques.subject.subname.upper()==request.GET.get('subname').upper() and
-        ques.subject.level.upper()==request.GET.get('level').upper()):
-            specific_questions.append(ques)
-            global subject,useranswer
-            subject.subcode=request.GET.get('subcode')
-            subject.subname=request.GET.get('subname')
-            subject.chname=request.GET.get('chname')
-            subject.level=request.GET.get('level')
-            subject.totalquestions=int(request.GET.get('tques'))
-            useranswer = ['']*subject.totalquestions
-    return specific_questions
-
 def ShowTest(request):
     subname=request.GET.get('subname')
     sub_test=get_subjectTest(subname)
@@ -103,37 +85,7 @@ def ShowTest(request):
     return render(request,'Quiz/show-test.html',{'test_sheet':sub_test,'subname':subname,
     'logo': sub_test[0].logo if len(sub_test)!=0 else ''})
 
-def reset_quiz():
-    global questions,i,useranswer,subject
-    questions=[]
-    i=0
-    useranswer=[]
-    subject=models.Subject()
-
-def generate_result(correctanswers,totalquestions,percentage,request):
-    res=models.QuizResult()
-    res.subcode=subject.subcode
-    res.subname=subject.subname
-    res.chname=subject.chname
-    res.level=subject.level
-    res.marksobtained=correctanswers
-    res.totalmarks=totalquestions
-    res.percentage=format(percentage,".2f")
-    res.user=request.user
-    profile=Profile.objects.get(user=request.user)
-    if res.marksobtained>profile.best_subject_marks:
-        profile.best_subject_marks=res.marksobtained
-        profile.best_subject=res.subname
-    if res.marksobtained<profile.weak_subject_marks:
-        profile.weak_subject_marks=res.marksobtained
-        profile.weak_subject=res.subname
-
-    profile.chname=res.chname
-    profile.level=res.level
-    
-    profile.save()
-    
-    return res
 
 def Show_details(request):
+    result=models.QuizResult.objects.get(id=int(request.GET.get('id')))
     return render(request,'Profile/Quiz-history-details.html',{'zip_data':zip(strToList(result.questions),strToList(result.useranswers),strToList(result.correctanswer)),'status':True})

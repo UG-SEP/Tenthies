@@ -1,34 +1,65 @@
 {% extends 'Home/nav.html' %}
+{% load static %}
 {% block title %}10thies | All Questions {% endblock %}
 {% block content %}
 
-{% if status == 'False' %}
-<form action="{% url 'compare_with_user' %}" method="post">
-    {% csrf_token %}
-    Compare with name of the user: <input type="text" name="username">
-    <input type="submit" value="Compare">
-</form>
-{% else %}
-<div><img src="{{yourProfile.profile_img.url}}" height="100px"></div>
-<div>Name: {{yourProfile.user.username}}</div>
-<div>Email: {{yourProfile.user.email}}</div>
-<div>Best In: {{yourProfile.best_subject}}</div>
-<div>Weak In: {{yourProfile.weak_subject}}</div>
-<div>Quiz Played Total test: {{yourTest}}</div>
-<div>Total Marks Obtained: {{yourPerformance.marksobtained}}</div>
-<div>Total Marks: {{yourPerformance.totalmarks}}</div>
-<div>Percentage: {{yourPerformance.percentage}}</div>
-<div>Your points</div>
+<link rel="stylesheet" href="{% static 'css/compare-user.css' %}">
+<div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+        {% if status == 'False' %}
+        <h1>SEARCH PROGRESS OF OTHER USER</h1>
+    <div class="wrapper">
+    <div class="search-input">
+      <a href="" target="_blank" hidden></a>
+      
+      <form action="{% url 'compare_with_user' %}" method="post">
+      <input type="text" placeholder="Type to search...">
+      <div class="autocom-box">
+        <!-- here list are inserted from javascript -->
+      </div>
+      <!--Want submit button to be replaced by the search icon -->
+      <div class="icon"><i class="fas fa-search"></i></div>
+    </form>
 
-<div><img src="{{otherUserProfile.profile_img.url}}" height="100px"></div>
-<div>Name: {{otherUserProfile.user.username}}</div>
-<div>Email: {{otherUserProfile.user.email}}</div>
-<div>Best In: {{otherUserProfile.best_subject}}</div>
-<div>Weak In: {{otherUserProfile.weak_subject}}</div>
-<div>Total test: {{otherTest}}</div>
-<div>Total Marks Obtained: {{otherUserPerformance.marksobtained}}</div>
-<div>Total Marks: {{otherUserPerformance.totalmarks}}</div>
-<div>Percentage: {{otherUserPerformance.percentage}}</div>
-<div>{{otherUserProfile.user.username}}'s Points</div>
+    </div>
+  </div>
+  {% else %}
+  <div class="dropdown-skills">
+<div class="container">
+<div class="skills html"><div>HTML     </div>90%</div>
+</div>
+<div class="container">
+<div class="skills html"><div>HTML     </div>90%</div>
+</div>
+</div>
+
+  <div class="dropdown">
+  <div class="details">
+<h3><div>Subject:</div> {{sub1}}</h3><br>
+<h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
+<h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
+<h3><div>Marks obtained:</div> {{subDetail1.marksobtained}}</h3><br>
+<h3><div>Best chapter:</div>{{subDetail1.best_chapter}}</h3><br>
+<h3><div>Weak Chapter:</div>{{subDetail1.weak_chapter}}</h3><br>
+<h3><div>Best Chapter Marks:</div> {{subDetail1.best_chapter_marks}}</h3><br>
+<h3><div>Weak Chapter Marks:</div> {{subDetail1.weak_chapter_marks}}</h3><br>
+<h3><div>Percentage:</div> {{subDetail1.percentage}}</h3><br>
+
+</div>
+<div class="details">
+<h3><div>Subject:</div> {{sub1}}</h3><br>
+<h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
+<h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
+<h3><div>Marks obtained:</div> {{subDetail1.marksobtained}}</h3><br>
+<h3><div>Best chapter:</div>{{subDetail1.best_chapter}}</h3><br>
+<h3><div>Weak Chapter:</div>{{subDetail1.weak_chapter}}</h3><br>
+<h3><div>Best Chapter Marks:</div> {{subDetail1.best_chapter_marks}}</h3><br>
+<h3><div>Weak Chapter Marks:</div> {{subDetail1.weak_chapter_marks}}</h3><br>
+<h3><div>Percentage:</div> {{subDetail1.percentage}}</h3><br>
+
+</div>
+</div>        
+  </div>
+  </div> 
 {% endif %}
 {% endblock %}

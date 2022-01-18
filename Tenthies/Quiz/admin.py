@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from Quiz.models import Question, QuizResult, Subject
+from Quiz.models import Question, QuizDetails, QuizResult, Subject
 
 class QuestionAdmin(admin.ModelAdmin):
     search_fields=('ques','subject__subname','subject__level','subject__subcode')
@@ -17,3 +17,4 @@ class QuizResultAdmin(admin.ModelAdmin):
 admin.site.register(Subject,SubjectAdmin)
 admin.site.register(Question,QuestionAdmin)
 admin.site.register(QuizResult,QuizResultAdmin)
+admin.site.register(QuizDetails)

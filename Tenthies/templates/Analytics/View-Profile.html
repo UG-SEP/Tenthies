@@ -1,0 +1,50 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+
+{% if status == 'False' %}
+
+    <form action="{% url 'view_profile' %}" method="post">
+        {% csrf_token %}
+        User <input type="text" name="username">
+        <input type="submit" value="Search">
+    </form>
+
+{% else %}
+
+
+        <img src="{{profile.profile_img.url}}" alt="profile card" height="100px">
+     
+       
+      <div class="profile-card__name">{{user.username}}</div>
+      <div class="profile-card__txt"> <strong>Student</strong> </div>
+      <div class="profile-card__txt">{{user.email}}</div>
+    
+
+          <div class="profile-card-inf__title">{{total_test}}</div>
+          <div class="profile-card-inf__txt">Tests</div>
+  
+          <div class="profile-card-inf__title">{{tresult.marksobtained}}</div>
+          <div class="profile-card-inf__txt">Your Total</div>
+        </div>
+
+          <div class="profile-card-inf__title">{{tresult.totalmarks}}</div>
+          <div class="profile-card-inf__txt">Total Marks</div>
+       
+          <div class="profile-card-inf__title">{{tresult.percentage}}</div>
+          <div class="profile-card-inf__txt">Percentage</div>
+        </div>
+          
+          <div class="profile-card-inf__title">{{profile.best_subject}}</div>
+          <div class="profile-card-inf__txt">Best subject</div>
+        </div>
+          
+          <div class="profile-card-inf__title">{{profile.weak_subject}}</div>
+          <div class="profile-card-inf__txt">Weak Subject</div>
+        </div>
+          
+      </div>
+    
+{% endif %}
+
+{% endblock %}

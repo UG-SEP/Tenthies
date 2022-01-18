@@ -1,4 +1,5 @@
-from Quiz.models import Subject
+from Profile.models import Profile
+from Quiz.models import QuizResult, Subject
 
 def getSubjects(dsubjects):
     subjects=[]
@@ -31,6 +32,8 @@ def calculate_per(totalquestions,correctanswer):
     except ZeroDivisionError:
         pass
 
+def listToStr(l):
+    return ',@,'.join(l)
 def storeinfo(useranswer,questions,result,correctanswer):
     result.useranswers=',@,'.join(useranswer)
     result.correctanswer=',@,'.join(correctanswer)
@@ -46,3 +49,51 @@ def get_questions(questions):
 
 def strToList(data):
     return list(data.split(',@,'))
+
+def getSpecificQuestions(all_questions,request,detail):
+
+    subject=Subject.objects.get(id=request.GET.get('id'))
+    for ques in all_questions:
+        if(ques.subject.chname.upper()==subject.chname.upper() and
+        ques.subject.subname.upper()==subject.subname.upper() and
+        ques.subject.level.upper()==subject.level.upper()):
+            detail.questions.add(ques)
+
+    return detail
+
+def reset_quiz(detail):
+    detail.delete()
+
+def generate_result(correctanswers,percentage,request,detail):
+    res=QuizResult()
+    res.subcode=detail.subject.subcode
+    res.subname=detail.subject.subname
+    res.chname=detail.subject.chname
+    res.level=detail.subject.level
+    res.marksobtained=correctanswers
+    res.totalmarks=detail.subject.totalquestions
+    res.percentage=format(percentage,".2f")
+    res.user=request.user
+    profile=Profile.objects.get(user=request.user)
+    if res.marksobtained>profile.best_subject_marks:
+        profile.best_subject_marks=res.marksobtained
+        profile.best_subject=res.subname
+    if res.marksobtained<profile.weak_subject_marks:
+        profile.weak_subject_marks=res.marksobtained
+        profile.weak_subject=res.subname
+
+    if res.marksobtained/(res.totalmarks/10) <= 5 and res.marksobtained/(res.totalmarks/10) > 3:
+        profile.points+=1
+    elif res.marksobtained/(res.totalmarks/10) <= 9 and res.marksobtained/(res.totalmarks/10) > 5:
+        profile.points+=2
+    elif res.marksobtained/(res.totalmarks/10) == 10:
+        profile.points+=3
+    else:
+        pass
+
+    profile.chname=res.chname
+    profile.level=res.level
+    
+    profile.save()
+    
+    return res

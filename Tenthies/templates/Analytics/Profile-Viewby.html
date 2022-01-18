@@ -1,0 +1,11 @@
+{% extends 'Home/nav.html' %}
+{% block title %}10thies | All Questions {% endblock %}
+{% block content %}
+
+{% for profile in seenby %}
+
+    <div>{{profile}}</div>
+
+    {% endfor %}
+
+{% endblock %}

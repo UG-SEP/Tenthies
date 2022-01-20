@@ -1,41 +1,39 @@
 {% extends 'Home/nav.html' %}
 {% load static %}
-{% block title %}10thies | All Questions {% endblock %}
+{% block title %}10thies | Subject Analysis {% endblock %}
 {% block content %}
-
 <link rel="stylesheet" href="{% static 'css/compare-subject.css' %}">
-<div class="quiz-container" id="quiz">
-    <div class="quiz-header">
+      <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
 
-        {% if status == 'False' %}
+        <h1>COMPARE 2 SUBJECTS</h1>
+        <div class="dropdown">
+        <div class="select">
+      <select name="Fsubject" id="format">
+         {% for sub in subjects %}
+         <option value="{{sub}}">{{sub}}</option>
+         {% endfor %}
+   </select>
+</div>
 
-      <h1>COMPARE 2 SUBJECTS</h1>
-      <form action="{% url 'custom_subject_compare' %}" method="post">
-          {% csrf_token %}
-      <div class="dropdown">
       <div class="select">
-    <select name="Fsubject" id="format">
-        {% for sub in subjects %}
-        <option value="{{sub}}">{{sub}}</option>
-        {% endfor %}
- </select>
-</div>
-
-    <div class="select">
-    <select name="Ssubject" id="format">
-        {% for sub in subjects %}
-    <option value="{{sub}}">{{sub}}</option>
-    {% endfor %}
- </select>
+      <select name="Ssubject" id="format">
+      {% for sub in subjects %}
+      <option value="{{sub}}">{{sub}}</option>
+      {% endfor %}
+   </select>
 </div>
 </div>
-<input type="submit" value="COMPARE">
-</form>
-
-{% else %}
-
+<div class="dropdown-skills">
+<div class="container">
+  <div class="skills html"><div>HTML     </div>90%</div>
+</div>
+<div class="container">
+  <div class="skills html"><div>HTML     </div>90%</div>
+</div>
+</div>
 <div class="dropdown">
-  <div class="details">
+    <div class="details">
 <h3><div>Subject:</div> {{sub1}}</h3><br>
 <h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
 <h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
@@ -63,5 +61,4 @@
 </div>
 </div>
 
-{% endif %}
 {% endblock %}

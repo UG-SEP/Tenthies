@@ -3,28 +3,20 @@
 {% block title %} 10thies | Test {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style-quiz-subjects.css' %}">
-      <div class=heading>
-         <h1><i class="{{logo}}"><span>{{subname}}</span></i></h1>
-      </div>
+      
+      <div class="wrap">
       {% for sub in test_sheet %}
-      <section class="Containers">
-         <div class="layout">
-         <div class="Subcode">{{sub.subcode}}</div>
-        <div class="Chname">{{sub.chname}}</div>
-        <div class="Level">{{sub.level}}</div> <br>
-        {% if user.is_authenticated %}
-            <div class="buttoncenter"><a href="http://localhost:8000/Quiz/take-test?id={{sub.id}}"><button class="favorite styled"type="button">
-          GIVE QUIZ
-         </button></a>
-      </div>
-      {% else %}
-      <div class="buttoncenter"><a href="http://10thies.live/User/signin"><button class="favorite styled"type="button">
-         GIVE QUIZ
-        </button></a>
-     </div>
-      {% endif %}
-      </div>
-   </section>
+         <div class="box red">
+             <h2 style="color: black; font-size: 27px;">{{sub.subname}}</h2>
+             <h2 style="color: rgb(19, 19, 19);">{{sub.chname}}</h2>
+             <p>{{sub.level}}</p>
+             <div class="button-wrap">
+                 <a href="http://localhost:8000/Quiz/take-test?id={{sub.id}}" class="button">Play Quiz !</a>
+             </div>
+            </div>
+        
+     
    {% endfor %}
+</div>
 {% endblock %}
    

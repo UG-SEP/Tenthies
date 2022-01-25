@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 body{
-  background-color: #F2F2F2;
+  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
 }
 .quiz-container {
   background-color: #fff;
@@ -17,19 +22,22 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 .quiz-header {
-  padding: 4rem;
+  padding: 2rem;
 }
 
-h1 {
-  padding: 1rem;
+.heading {
   text-align: center;
-  margin: 0;
+  font-size: 3rem;
+  margin-bottom: 30px;
   font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-  color: #696969;
+  font-family: 'Lobster', cursive ;
+  color: #252525;
 }
 
 @media (max-width: 425px){
+  .heading {
+    font-size: 2.4rem;
+  }
   .quiz-container {
     margin: 0;
     margin-left: 0%;
@@ -73,13 +81,14 @@ select {
    color:#fff;
    cursor:pointer;
    font-size: 1em;
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Montserrat', sans-serif;
 }
 select::-ms-expand {
    display: none;
 }
 .select {
    position: relative;
+   margin-bottom: 5px;
    display: flex;
    width: 20em;
    height: 3em;
@@ -102,19 +111,16 @@ select::-ms-expand {
 .select:hover::after {
    color: #ff7518;
 }
-.details
-{
-    margin-top: 40px;
-}
+
 h3 div{
     display: inline;
     color: black;
-    font-family: Poppins, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 h3 {
   padding: 2px;
   margin: 0;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: inline;
   font-weight: 500;
   font-size: 18px;
@@ -157,11 +163,51 @@ h3 {
   margin-left: 10px;
 }
 
-.html {width: 90%; background-color:#FF8C00;} 
+.html {
+  width: 90%;
+  background-color:#FF8C00;
+   padding:8px 10px;
+   text-align: center;
+  } 
 
 .dropdown-skills{
   display:flex;
   justify-content: space-evenly;
   justify-content: space-between;
   
+}
+
+
+table {
+  font-family: 'Montserrat', sans-serif;
+  border-collapse: collapse;
+  font-size: 17px;
+  border-spacing: 0;
+  word-wrap: break-word;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+th:first-child, td:first-child {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+.compare-btn button{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  padding: 6px 14px;
+  background-color: rgb(255, 102, 0);
+  margin-bottom: 20px;
+  border-radius: 2px;
+  border: none;
+  color: white;
 }

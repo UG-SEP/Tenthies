@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;0,700;1,300;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 :root{
-	--main-color:#ff3d00;
+	--main-color:#ff4800;
   --main-color-light:#ff531e;
 }
-
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 *{
   margin: 0;
   padding: 0;
@@ -12,22 +20,25 @@
   font-family: 'Montserrat', sans-serif;
 }
 section{
-	min-height: 90vh;
-	border:solid 1px rgb(196, 196, 196);
+	min-height:100vh;
+	border:solid 1px rgba(0, 0, 0, 0);
 }
 a{
 	color: white;
 	text-decoration: none;
 }
 body{
-   background: #f2f2f2;
-  text-decoration: none;
-  overflow-x: hidden;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  width: 100%;
+    background: #ffffff;
+    text-decoration: none;
+    overflow-x: hidden;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+}
+.curve{
+  margin-bottom: -25px;
 }
 /*                                     MESSAGE SYSTEM                                          */
 #success,#danger,#alert{
@@ -48,6 +59,7 @@ body{
 /* -----------------------------------NAVBAR SECTION START------------------------------------ */
 nav{
   background: #171c24;
+  
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -80,6 +92,7 @@ nav .nav-items li a{
   font-weight: 500;
   text-decoration: none;
 }
+
 nav .log li {
 	color: white;
 	margin-left: 70%;
@@ -122,7 +135,7 @@ nav .user{
   }
   nav .nav-items{
     position: fixed;
-    z-index: 9999;
+    z-index: 99;
     top: 70px;
     width: 100%;
     left: -100%;
@@ -159,59 +172,102 @@ nav .user{
     display: block;
   }
 }
-.main-navigation {
-  padding-bottom:7px ;
-  border-bottom-style: solid;
-  border-bottom-color: orangered;
-  border-bottom-width: 3px;
-}
-
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX NAVBAR SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
 
 
 /* -----------------------------------LANDING PAGE SECTION START------------------------------------ */
-.content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  
+.home1{
+  background-color: #0c0e13;
+  /* background: url('../images/blackbg1.webp') no-repeat center center ;  */
+  min-height: 90vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   width: 100%;
 }
-.content h1{
-  font-size: 60px;
-  font-weight: 700;
-}
-.content h3{
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: .2rem;
-}
-.content  p{
-  padding-top: 5px;
-  font-size: 20px;
-  font-weight: 700;
- 
-}
-.home-btn{
-	margin-top: 15px;
-	font-size: 20px;
-	font-weight: 500;
-	padding: 13px 32px;
-	border-radius: 50px;
-    background-color: var(--main-color);
-    color: white;
-	border-color:var(--main-color);
-}
-.home-btn:hover {
-	
-	transform: translateY(-3px);
 
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-	transition: ease all .3s;
+.head-texts
+{ display: inline-block;
+  color: white;
+  position:absolute;
+  
+  top: 18%;
+  font-size:30px; 
+  padding: 20px;
+  padding-left: 40px;
+  word-wrap: break-word;
+}
+.head-texts p{
+ font-size: 25px;
+ margin-bottom: 20px;
+}
+.head-texts span{
+ color: var(--main-color);
+ font-family: 'Lobster', cursive ;
+ font-size: 70px;
+ font-weight: 400;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
   }
+  100% {
+
+      opacity: 1;
+   }
+}
+.button {
+  padding: 0.95rem 1.55rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+  animation: fadeInAnimation ease 1s;
+  /* optional reset for presentation */
+}
+.button:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  border-radius: 2px;
+  z-index: -2;
+}
+.button:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color:#ee3102 ;
+  transition: all 0.3s;
+  border-radius: 2px;
+  z-index: -1;
+}
+.button:hover {
+  color: #fff;
+}
+.button:hover:before {
+  width: 100%;
+}
+@media (max-width:500px){
+  .head-texts p{
+    font-size: 20px;
+   
+   }
+}
 .space{
   margin: 10px 0;
 }
@@ -219,14 +275,32 @@ nav .logo.space{
   color: red;
   padding: 0 5px 0 0;
 }
-
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  padding: 14px 14px;
+  border-radius: 50%;
+  font-size: 15px;
+}
+#myBtn:hover {
+  background-color: rgb(3, 3, 3);
+}
 
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX LANDING PAGE SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 .home2{
- height: auto;
+height: auto;
 }
 .home2 {
-	background: var(--main-color-light);
+	background: white;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -237,14 +311,16 @@ nav .logo.space{
 /* -----------------------------------LINK CARDS PAGE SECTION START------------------------------------ */
 .home2{
   margin: 0%;
- padding: 40px 10px ;
+  padding: 40px 10px ;
   box-sizing: border-box; 
+
 }
 .education {
 	--bg-color: #ffd861;
 	--bg-color-light: #ffeeba;
 	--text-color-hover: #4C5656;
 	--box-shadow-color: rgba(255, 215, 97, 0.48);
+  --border: #ffc71d;
   }
   
   .credentialing {
@@ -252,6 +328,7 @@ nav .logo.space{
 	--bg-color-light: #e2fced;
 	--text-color-hover: #4C5656;
 	--box-shadow-color: rgba(184, 249, 211, 0.48);
+  --border: #31ff87;
   }
   
   .wallet {
@@ -259,6 +336,7 @@ nav .logo.space{
 	--bg-color-light: #F0E7FF;
 	--text-color-hover: #fff;
 	--box-shadow-color: rgba(206, 178, 252, 0.48);
+  --border: #8a41ff;
   }
   
   .human-resources {
@@ -266,13 +344,14 @@ nav .logo.space{
 	--bg-color-light: #f1f7ff;
 	--text-color-hover: #4C5656;
 	--box-shadow-color: rgba(220, 233, 255, 0.48);
+  --border:#498cff ;
   }
   
   .blog-cards{
-
+  animation: fadeInAnimation ease 3.5s;
 	width: 200px;
 	height: 300px;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.904);
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
@@ -282,8 +361,10 @@ nav .logo.space{
 	box-shadow: 0 14px 26px rgba(0,0,0,0.04);
 	transition: all 0.3s ease-out;
 	text-decoration: none;
-        margin-bottom: 10px;
-        margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+ border: 2px dotted var(--border);
   }
   
   .blog-cards:hover {
@@ -374,8 +455,8 @@ nav .logo.space{
   /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX LINK CARDS SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
 /* -----------------------------------APPRECIATION PAGE SECTION START------------------------------------ */
-
-  .home5{
+ 
+.home5{
   min-height: auto;
 }
 .home4-head{
@@ -390,7 +471,7 @@ nav .logo.space{
 }
 
   .testimonials-section {
-    background:rgba(255, 73, 27, 0.842);
+    background:var(--main-color);
     height: 500px;
     position: relative;
     overflow: hidden;
@@ -461,44 +542,42 @@ nav .logo.space{
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
   }
-  .slider__contents {
+  .slider__contents { 
     height: 100%;
     text-align: center;
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+  
     display: flex;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
-    -ms-flex: 1;
+    
     flex: 1;
-    -webkit-flex-flow: column nowrap;
+    
     -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
+    
+   
     -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
+    
     -ms-flex-pack: center;
     justify-content: center;
   }
   .slider__caption {
-    font-size: 14px;
-    color: rgb(0, 0, 0);
-    opacity: .6;
-    font-family: 'Roboto';
+    font-size: 17px;
+    color: rgb(10, 10, 10);
+    opacity: .9;
+    font-family: 'Lobster', cursive ;
     font-weight: bold;
   }
   .slider__txt {
     font-size: 22px;
     font-weight: bold;
-    font-family: 'Roboto';
     line-height: 1.7;
     color: rgb(255, 255, 255);
     margin-top: -20px;
     margin-bottom: 20px;
+    padding: 0px 20px;
     max-width: 750px;
   }
   quote {    
@@ -532,35 +611,33 @@ nav .logo.space{
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX APPRECIATION SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
 /* -----------------------------------WHY DO YOU TRUST PAGE SECTION START------------------------------------ */
-.home4{
+.promice{
   min-height: auto;
 }
-.trust-block{
-	max-width: 800px;
-        height: auto;
-	margin:100px auto;
-	background:rgba(255, 86, 44, 0.842);
-	border-radius:2px;
-	padding:20px;
-	font-family: 'Montserrat', sans-serif;
+.promice-text{
+  margin-top: 10px;
+  
+  padding: 40px;
+ 
 }
-/* XXXXXXXXXXXXXXXXXXXXXXXXXXXX WHY DO YOU TRUST US SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-.inner-text
-{
-  background-color: white;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-        color:black;
-	width: 100%;
-	display: block;
-	outline: none;
-	border: none;
-	height: auto;
-	line-height: 25px;
-	font-size: 20px;
-        padding: 20px;
-       z-index: 4;  
+.promice-text p{
+  font-size: 25px;
+  text-align: center;
+}
+@media (max-width:1000px ){
+  .promice-text p{
+    font-size: 20px;
+  
+  }
+}
+@media (max-width:500px ){
+  .promice-text p{
+    font-size: 18px;
+    text-align: justify;
+  }
+  .promice-text{
+    padding: 30px;
+  }
 }
 
 
@@ -585,8 +662,8 @@ nav .logo.space{
   }
   .footer{
     background-color:  #050505;
-      padding: 70px 0;
-  }
+      padding: 20px 0;   /*  trail */
+  } 
   .footer-col{
      width: 25%;
      padding: 0 15px;
@@ -670,7 +747,17 @@ nav .logo.space{
 
 
 
- @media (max-width: 980px){
+
+
+
+
+
+
+
+
+
+
+  @media (max-width: 980px){
     
     nav .menu-icon,
     nav .cancel-icon,
@@ -706,7 +793,6 @@ nav .logo.space{
 
   @media (max-width: 640px){
     .testimonials-section {
-      background: rgb(255, 98, 41);
       height: 600px;
     }
     .home4-head h1{
@@ -739,6 +825,10 @@ nav .logo.space{
       left: 30px;
       
       }
+    
+  }
+  @media (max-width: 400px){
+    
     
   }
   @media (max-width: 350px){
@@ -780,5 +870,56 @@ nav .logo.space{
       font-size: 16px;
     }
   }
+ 
+
+
+
+
 /*
   /* XXXXXXXXXXXXXXXXXXXXXXXXXXXX FOOTER PAGE SECTION END XXXXXXXXXXXXXXXXXXXXXXXXXXXX  */
+
+
+
+
+  @media ( max-width: 425px ){
+    .span-text{
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .heading{
+      font-family: 'Lobster', cursive ;
+      font-size: 80px;
+      text-align: center;
+      position: relative;
+      padding:30px 0px;
+    }
+    .initial-info{
+      display: flex;
+      padding: 10px;
+      margin:0px 100px;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      border: rgba(0, 0, 0, 0.295) solid 2px;
+    
+    }
+    .studentimg,.info
+    {
+      margin: 50px;
+    }
+    .studentimg,img{
+      width: 220px;
+      height: 220px;
+      border-radius: 800px;
+      border: rgb(0, 0, 0) solid 2px;
+    }
+    .info{
+      padding-top: 20px;
+      width: 500px;
+      float: right;
+      font-size: 20px;
+      text-align:justify;
+      line-height: 48px;
+      justify-content: space-evenly;
+    }
+    
+  }

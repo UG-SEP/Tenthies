@@ -47,7 +47,7 @@ class QuizResult(models.Model):
         return str(self.subcode)+' | '+self.subname+' | '+ self.user.username
 
 class QuizDetails(models.Model):
-    questions=models.ManyToManyField(Question,null=True)
+    questions=models.ManyToManyField(Question)
     i=models.IntegerField(null=True)
     subject=models.ForeignKey(Subject,on_delete=models.PROTECT,default="")
     button=models.CharField(max_length=40,null=True)

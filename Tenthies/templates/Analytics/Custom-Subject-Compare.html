@@ -1,64 +1,95 @@
 {% extends 'Home/nav.html' %}
 {% load static %}
-{% block title %}10thies | Subject Analysis {% endblock %}
+{% block title %}10thies | Compare Subjects{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/compare-subject.css' %}">
-      <div class="quiz-container" id="quiz">
-      <div class="quiz-header">
-
-        <h1>COMPARE 2 SUBJECTS</h1>
-        <div class="dropdown">
+    <div class="quiz-container" id="quiz">
+        <div class="quiz-header">
+  {% if status == 'False' %}
+         <div class="heading">Compare Subjects</div>
+         <form action="{% url 'custom_subject_compare' %}" method="post">
+         {% csrf_token %}
+          <div class="dropdown">
+           <div class="compare-btn">
+            <div class="btn"><button type="submit" style="cursor: pointer;">Compare</button></div>
+           </div>
+         </div>
+       
+        
+         
+          <div class="dropdown">
+          <div class="select">
+        <select name="Fsubject" id="format">
+           {% for sub in subjects %}
+           <option value="{{sub}}">{{sub}}</option>
+           {% endfor %}
+     </select>
+  </div>
+  
         <div class="select">
-      <select name="Fsubject" id="format">
-         {% for sub in subjects %}
-         <option value="{{sub}}">{{sub}}</option>
-         {% endfor %}
-   </select>
+        <select name="Ssubject" id="format">
+        {% for sub in subjects %}
+        <option value="{{sub}}">{{sub}}</option>
+        {% endfor %}
+     </select>
+  </div>
+  </div>
+</form>
+{% else %}
+  <div class="dropdown-skills">
+  <div class="container">
+    <div class="skills html" style="width:{{subDetail1.percentage}}%"><div style="margin-right: 3px;">{{sub1}}</div> {{subDetail1.percentage}}</div>
+  </div>
+  <div class="container">
+    <div class="skills html" style="width:{{subDetail2.percentage}}%"><div style="margin-right: 3px;">{{sub2}}</div>{{subDetail2.percentage}}</div>
+  </div>
+  </div>
+  
+  <table>
+    <tr>
+      <th style="width:50%">Table</th>
+      <th>{{sub1}}</th>
+      <th>{{sub2}}</th>
+    </tr>
+    <tr>
+      <td>Total test</td>
+       <td>{{subDetail1.total_test}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail1.total_test}}</td>      <!-- For subject 2 -->
+    </tr>
+    <tr>
+      <td>Total marks</td>
+       <td>{{subDetail1.total_marks}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail2.total_marks}}</td>      <!-- For subject 2 -->
+    </tr>
+    <tr>
+      <td>Marks Obtained</td>
+       <td>{{subDetail1.marksobtained}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail2.marksobtained}}</td>      <!-- For subject 2 -->
+    </tr>
+    <tr>
+      <td>Best Chapter</td>
+       <td>{{subDetail1.best_chapter}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail2.best_chapter}}</td>      <!-- For subject 2 -->
+    </tr>
+    <tr>
+      <td>Weak Chapter</td>
+       <td>{{subDetail1.weak_chapter}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail2.weak_chapter}}</td>      <!-- For subject 2 -->
+    </tr>
+    <tr>
+      <td>Best Chapter Marks</td>
+       <td>{{subDetail1.best_chapter_marks}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail2.best_chapter_marks}}</td>      <!-- For subject 2 -->
+    </tr>
+   
+    <tr>
+      <td>Weak Chapter Marks</td>
+       <td>{{subDetail1.weak_chapter_marks}}</td>   <!-- For subject 1 -->
+      <td>{{subDetail2.weak_chapter_marks}}</td>      <!-- For subject 2 -->
+    </tr>
+   
+  </table>
 </div>
-
-      <div class="select">
-      <select name="Ssubject" id="format">
-      {% for sub in subjects %}
-      <option value="{{sub}}">{{sub}}</option>
-      {% endfor %}
-   </select>
-</div>
-</div>
-<div class="dropdown-skills">
-<div class="container">
-  <div class="skills html"><div>HTML     </div>90%</div>
-</div>
-<div class="container">
-  <div class="skills html"><div>HTML     </div>90%</div>
-</div>
-</div>
-<div class="dropdown">
-    <div class="details">
-<h3><div>Subject:</div> {{sub1}}</h3><br>
-<h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
-<h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
-<h3><div>Marks obtained:</div> {{subDetail1.marksobtained}}</h3><br>
-<h3><div>Best chapter:</div>{{subDetail1.best_chapter}}</h3><br>
-<h3><div>Weak Chapter:</div>{{subDetail1.weak_chapter}}</h3><br>
-<h3><div>Best Chapter Marks:</div> {{subDetail1.best_chapter_marks}}</h3><br>
-<h3><div>Weak Chapter Marks:</div> {{subDetail1.weak_chapter_marks}}</h3><br>
-<h3><div>Percentage:</div> {{subDetail1.percentage}}</h3><br>
-
-</div>
-<div class="details">
-<h3><div>Subject:</div> {{sub1}}</h3><br>
-<h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
-<h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
-<h3><div>Marks obtained:</div> {{subDetail1.marksobtained}}</h3><br>
-<h3><div>Best chapter:</div>{{subDetail1.best_chapter}}</h3><br>
-<h3><div>Weak Chapter:</div>{{subDetail1.weak_chapter}}</h3><br>
-<h3><div>Best Chapter Marks:</div> {{subDetail1.best_chapter_marks}}</h3><br>
-<h3><div>Weak Chapter Marks:</div> {{subDetail1.weak_chapter_marks}}</h3><br>
-<h3><div>Percentage:</div> {{subDetail1.percentage}}</h3><br>
-
-</div>
-</div>        
-</div>
-</div>
-
+  </div>
+{% endif %}
 {% endblock %}

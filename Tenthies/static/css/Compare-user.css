@@ -33,7 +33,7 @@ h1 {
   padding: 1rem;
   text-align: center;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-family: 'Montserrat', sans-serif;
   color: #696969;
 }
@@ -111,13 +111,13 @@ h1 {
   cursor: pointer;
 }
 
-@media (max-width: 425px){
+@media (max-width: 580px){
   .quiz-container {
     margin: 0;
+    border-radius: 0px;
     margin-left: 0%;
     height: 100%;
     width: 100%;
-    border-radius: 0px;
     box-shadow: none;
   box-shadow: none;
   box-shadow: none;
@@ -126,16 +126,50 @@ h1 {
 .quiz-header {
   padding: 0;
 }
+}
+* {
+  font-family: 'Montserrat',sans-serif; /* Change your font family */
+}
 
-h1 {
-  padding: 10px;
-  text-align: center;
-  margin: 0;
-  display: block;
-  font-weight: 400;
-  font-size: 16px;
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 97%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
+.content-table thead tr {
+  background-color: orangered;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
 }
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid orangered;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: orangered;
+}
+
 
 .dropdown{
     display: flex;
@@ -184,7 +218,7 @@ h3 {
   margin-left: 10px;
 }
 
-.html {width: 90%; background-color:#FF8C00;} 
+.html {background-color:#FF8C00;} 
 
 .dropdown-skills{
   display:flex;

@@ -5,63 +5,88 @@
 
 <link rel="stylesheet" href="{% static 'css/compare-user.css' %}">
 <div class="quiz-container" id="quiz">
-    <div class="quiz-header">
-        {% if status == 'False' %}
-        <h1>SEARCH PROGRESS OF OTHER USER</h1>
-    <div class="wrapper">
-    <div class="search-input">
-      <a href="" target="_blank" hidden></a>
-      
-      <form action="{% url 'compare_with_user' %}" method="post">
-      <input type="text" placeholder="Type to search...">
-      <div class="autocom-box">
-        <!-- here list are inserted from javascript -->
-      </div>
-      <!--Want submit button to be replaced by the search icon -->
-      <div class="icon"><i class="fas fa-search"></i></div>
-    </form>
+  <div class="quiz-header">
+    {% if status == 'False' %}
+    <h1>SEARCH PROGRESS OF OTHER USER</h1>
+  <div class="wrapper">
+    <form action="{% url 'compare_with_user' %}" method="post">
+      {% csrf_token %}
+  <div class="search-input">
+    <input type="text" name="username" placeholder="Type to search..">
+    <div class="icon"><button type="submit" style="height: 50px;width: 50px; background: #FFF; color: orangered; border: none;cursor: pointer;">
+      <i class="fas fa-search"></i></button></div>
 
-    </div>
   </div>
-  {% else %}
-  <div class="dropdown-skills">
-          <div>User Image</div>
-<div class="container">
-<div class="skills html"><div>HTML     </div>90%</div>
-</div>
-<div class="container">
-<div class="skills html"><div>HTML     </div>90%</div>
-</div>
-          <div>User Image</div>
+  </form>
 </div>
 
-  <div class="dropdown">
-  <div class="details">
-<h3><div>Subject:</div> {{sub1}}</h3><br>
-<h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
-<h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
-<h3><div>Marks obtained:</div> {{subDetail1.marksobtained}}</h3><br>
-<h3><div>Best chapter:</div>{{subDetail1.best_chapter}}</h3><br>
-<h3><div>Weak Chapter:</div>{{subDetail1.weak_chapter}}</h3><br>
-<h3><div>Best Chapter Marks:</div> {{subDetail1.best_chapter_marks}}</h3><br>
-<h3><div>Weak Chapter Marks:</div> {{subDetail1.weak_chapter_marks}}</h3><br>
-<h3><div>Percentage:</div> {{subDetail1.percentage}}</h3><br>
+
+
+<table class="content-table">
+<thead>
+<tr>
+  <th>Rank</th>
+  <th>Name</th>
+  <th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="active-row">
+  <td>1</td>
+  <td>{{topper1.user.username}}</td>
+  <td>{{topper1.points}}</td>
+</tr>
+<tr >
+  <td>2</td>
+  <td>{{topper2.user.username}}</td>
+  <td>{{topper2.points}}</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>{{topper3.user.username}}</td>
+  <td>{{topper3.points}}</td>
+</tr>
+</tbody>
+</table>
+
+{% else %}
+
+
+<div class="dropdown-skills">
+<div class="container">
+<div class="skills html" style="width: {{yourPerformance.percentage}}%;"><div>{{yourProfile.user.username}}     </div> {{yourPerformance.percentage}}</div>
+</div>
+<div class="container">
+<div class="skills html" style="width: {{otherUserPerformance.percentage}}%;"><div>{{otherUserProfile.user.username}} </div> {{otherUserPerformance.percentage}}</div>
+</div>
+</div>
+
+<div class="dropdown">
+<div class="details">
+<h3><div>Username</div> {{yourProfile.user.username}}</h3><br>
+<h3><div>Points:</div> {{yourProfile.points}}</h3><br>
+<h3><div>Total Test:</div> {{yourTest}}</h3><br>
+<h3><div>Total marks:</div> {{yourPerformance.totalmarks}}</h3><br>
+<h3><div>Marks obtained:</div> {{yourPerformance.marksobtained}}</h3><br>
+<h3><div>Best Subject:</div>{{yourProfile.best_subject}}</h3><br>
+<h3><div>Weak Subject:</div>{{yourProfile.weak_subject}}</h3><br>
+<h3><div>Percentage:</div> {{yourPerformance.percentage}}</h3><br>
 
 </div>
 <div class="details">
-<h3><div>Subject:</div> {{sub1}}</h3><br>
-<h3><div>Total Test of this particular subject:</div> {{subDetail1.total_test}}</h3><br>
-<h3><div>Total marks of test:</div> {{subDetail1.total_marks}}</h3><br>
-<h3><div>Marks obtained:</div> {{subDetail1.marksobtained}}</h3><br>
-<h3><div>Best chapter:</div>{{subDetail1.best_chapter}}</h3><br>
-<h3><div>Weak Chapter:</div>{{subDetail1.weak_chapter}}</h3><br>
-<h3><div>Best Chapter Marks:</div> {{subDetail1.best_chapter_marks}}</h3><br>
-<h3><div>Weak Chapter Marks:</div> {{subDetail1.weak_chapter_marks}}</h3><br>
-<h3><div>Percentage:</div> {{subDetail1.percentage}}</h3><br>
-
+  <h3><div>Username</div> {{otherUserProfile.user.username}}</h3><br>
+  <h3><div>Points:</div> {{otherUserProfile.points}}</h3><br>
+  <h3><div>Total Test:</div> {{otherTest}}</h3><br>
+  <h3><div>Total marks:</div> {{otherUserPerformance.totalmarks}}</h3><br>
+  <h3><div>Marks obtained:</div> {{otherUserPerformance.marksobtained}}</h3><br>
+  <h3><div>Best Subject:</div>{{otherUserProfile.best_subject}}</h3><br>
+  <h3><div>Weak Subject:</div>{{otherUserProfile.weak_subject}}</h3><br>
+  <h3><div>Percentage:</div> {{otherUserPerformance.percentage}}</h3><br>
+  
 </div>
 </div>        
-  </div>
-  </div> 
+</div>
+</div> 
+
 {% endif %}
 {% endblock %}

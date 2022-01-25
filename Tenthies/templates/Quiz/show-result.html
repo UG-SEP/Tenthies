@@ -25,11 +25,11 @@
       <div><b>Total Marks:</b> {{res.totalmarks}}</div>
       <div><b>Marks Obtained:</b> {{res.marksobtained}}</div>
       <div><b>Percentage:</b> {{res.percentage}}%</div>
-      <div class="buttoncenter"><a href="{% url 'quiz' %}"><button class="favorite styled"type="button">
+      <div class="button"><a href="{% url 'quiz' %}"><button class="favorite styled"type="button">
          BACK
         </button></a>
       </div>
-      <div class="buttoncenter"><a href="http://localhost:8000/Quiz/quiz-details?id={{res.id}}"><button class="favorite styled"type="button">
+      <div class="button"><a href="http://localhost:8000/Quiz/quiz-details?id={{res.id}}"><button class="favorite styled"type="button">
          Details
         </button></a>
       </div>

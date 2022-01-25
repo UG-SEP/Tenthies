@@ -12,9 +12,10 @@
 
 {% else %}
 
-
-        <img src="{{profile.profile_img.url}}" alt="profile card" height="100px">
-     
+{% if profile.profile_img %}
+<img src="{{profile.profile_img.url}}" alt="profile card" height="100px">
+{% else %}
+<img src="{% static 'images/user.gif' %}" alt="profile card">
        
       <div class="profile-card__name">{{user.username}}</div>
       <div class="profile-card__txt"> <strong>Student</strong> </div>

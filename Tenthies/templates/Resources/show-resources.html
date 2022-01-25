@@ -10,71 +10,33 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style-resources.css' %}">
-      <div class=heading>
-         <h1><i class="{{logo}}"><span>{{subname}}</span></i></h1>
-      </div>
-      {% for res in resources %}
-      <section class="Containers">
-         <div class="layout">
-            {% if name == 'resources' %}
-            <iframe
-             src="{{res.pdf.url}}"
-             frameBorder="0"
-             scrolling="auto"
-             height="100%"
-             width="25%"
-             align="right"
-             ></iframe>
-             {% else %}
-             <img src="{{res.quickmap.url}}" alt="quickmaps" width="150px" align="right" margin-right="20px">
-             {% endif %}
-         <div class="Subcode">{{res.subject.subcode}}</div>
-         <div class="Chname">{{res.subject.subname}}</div>
-         <div class="Level">{{res.subject.chname}}</div> <br>
-         {% if name == 'resources' %}
-         {% if user.is_authenticated %}
 
-         <div class="buttoncenter"><a href="{{res.pdf.url}}"><button class="favorite styled"type="button">
-          PREVIEW
-         </button></a>
-      </div>
-       <div class="buttoncenter"><a href="{{res.pdf.url}}" download=""><button class="favorite styled"type="button">
-          DOWNLOAD
-         </button></a>
-      </div>
-      {% else %}
-      <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
-         PREVIEW
-        </button></a>
+      <div class="wrap">
+         {% for res in resources %}
+         <div class="box red">
+             <h2 style="color: black; font-size: 27px;">{{res.subject.subname}}</h2>
+             <h2 style="color: rgb(19, 19, 19);">{{res.subject.chname}}</h2>
+             <p>Strictly according to CBSE class 10th Syllabus</p>
+             <div class="button-wrap">
+                 {% if name == 'resources' %}
+                 {% if user.is_authenticated %}
+                 <a href="{{res.pdf.url}}" class="button">Preview</a>
+                 <a href="{{res.pdf.url}}" class="button" download="" >Download</a>
+                 {% else %}
+                 <a href="{% url 'signup' %}" class="button">Preview</a>
+                 <a href="{% url 'signup' %}" class="button">Download</a>
+                 {% endif %}
+                 {% else %}
+                 {% if user.is_authenticated %}
+                 <a href="{{res.quickmap.url}}" class="button">Preview</a>
+                 <a href="{{res.quickmap.url}}" class="button" download="">Download</a>
+                 {% else %}
+                 <a href="{% url 'signup' %}" class="button">Preview</a>
+                 <a href="{% url 'signup' %}" class="button">Download</a>
+                 {% endif %}
+                 {% endif %}
+             </div>
+            </div>
+         {% endfor %}
      </div>
-      <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
-         DOWNLOAD
-        </button></a>
-     </div>
-      {% endif %}
-      {% else %}
-      {% if user.is_authenticated %}
-      <div class="buttoncenter"><a href="{{res.quickmap.url}}"><button class="favorite styled"type="button">
-         PREVIEW
-        </button></a>
-     </div>
-      <div class="buttoncenter"><a href="{{res.quickmap.url}}" download=""><button class="favorite styled"type="button">
-         DOWNLOAD
-        </button></a>
-     </div>
-     {% else %}
-     <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
-      PREVIEW
-     </button></a>
-  </div>
-   <div class="buttoncenter"><a href="{% url 'signup' %}"><button class="favorite styled"type="button">
-      DOWNLOAD
-     </button></a>
-  </div>
-  </div>
-     {% endif %}
-     {% endif %}
-      </div>
-   </section>
-   {% endfor %}
 {% endblock %}

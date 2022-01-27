@@ -40,6 +40,7 @@ body{
 	--bg-color-light: #F0E7FF;
 	--text-color-hover: #fff;
 	--box-shadow-color: #ceb2fc7a;
+ --border: #ffc71d;   /*  APPLY SAME COLOR AS THE CARD */
   }  
   .blog-cards {
 	width: 220px;
@@ -55,6 +56,8 @@ body{
 	transition: all 0.3s ease-out;
 	text-decoration: none;
 	margin: 30px 10px;
+  border: 2px dotted var(--border);   /*  APPLIES BORDER COLOR FOR INDIVIDUAL CARD */  
+  border-radius: 10px;                      
   }
   
   .blog-cards:hover {
